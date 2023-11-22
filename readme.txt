@@ -24,5 +24,3 @@ Para que funcione PostgreSQL con XAMPP, es necesario acceder a la dirección C:\
 3. Borrar el ; que esta al inicio de la línea
 4. Guardar los cambios y cerrar el archivo
 5. Reiniciar Apache
-
-xd
