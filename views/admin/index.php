@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase con las plantillas del documento.
-require_once('../../app/helpers/dashboard_page.php');
+require_once('../../app/helpers/adminPage.php');
 // Se imprime la plantilla del encabezado enviando el título de la página web.
 Dashboard_Page::headerTemplate('Iniciar sesión');
 ?>
@@ -11,8 +11,8 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
         <form method="post" id="session-form">
             <div class="input-field col s12 m6 offset-m3">
                 <i class="material-icons prefix">person_pin</i>
-                <input id="alias" type="text" name="alias" class="validate" required/>
-                <label for="alias">Usuario</label>
+                <input id="usuario" type="text" name="alias" class="validate" required/>
+                <label for="usuario">Usuario</label>
             </div>
             <div class="input-field col s12 m6 offset-m3">
                 <i class="material-icons prefix">security</i>
