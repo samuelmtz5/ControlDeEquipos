@@ -98,3 +98,17 @@ CREATE TABLE DetallePrestamo(
 	idEstadoPrestamo INT NOT NULL,
 	CONSTRAINT fk_estadoprestamo FOREIGN KEY (idEstadoPrestamo) REFERENCES EstadoPrestamo(idEstadoPrestamo)
 )
+
+INSERT INTO MARCA VALUES (1,'Dell'),(2,'HP'),(3,'Lenovo'),(4,'XTech'),(5,'Epson'),(6,'Apple'),(7,'Xiaomi'),(8,'Samsung'),(9,'AOC'),(10,'Compac')
+
+INSERT INTO Condicion VALUES (1,'Nuevo'),(2,'Inservible'),(3,'Desechado')
+
+INSERT INTO AdquisicionEquipo VALUES (1,'Comprado'),(2,'Donado')
+
+INSERT INTO Nivel VALUES (1,'Administración'),(2,'Académica'),(3,'Mantenimiento'),(4,'Ingeniería'),(5,'Clínica'),(6,'Sistemas'),
+						 (7,'Básica'),(8,'Parvularia'),(9,'Tercer Ciclo'),(10,'Bachillerato')
+
+INSERT INTO TipoUsuario VALUES (1,'Administrador'),(2,'Normal')
+
+INSERT INTO Usuario VALUES(1,'Administrador','Administrador','00000000-1','administrador@gmail.com','admon','S0p0rteIT2024',1,6)
+INSERT INTO Usuario VALUES(2,'Samuel Eduardo','Magaña Martínez','06508618-4','samuelmartinez5516@gmail.com','samuelmtz5','210503',1,6)
