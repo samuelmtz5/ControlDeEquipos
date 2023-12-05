@@ -13,6 +13,7 @@ class Usuarios extends Validator
     private $user = null;
     private $passwrd = null;
     private $tipo = null;
+    private $nivel = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -97,6 +98,16 @@ class Usuarios extends Validator
         }
     }
 
+    public function setNivel($value)
+    {
+        if ($this->validateNaturalNumber($value)) {
+            $this->nivel = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -140,6 +151,11 @@ class Usuarios extends Validator
         return $this->tipo;
     }
 
+    public function getNivel()
+    {
+        return $this->nivel;
+    }
+
     /*
     *   Métodos para gestionar la cuenta del usuario.
     */
@@ -180,8 +196,9 @@ class Usuarios extends Validator
 
     public function readProfile()
     {
-        $sql = 'SELECT idUsuario, nombres, apellidos, DUI, correo, username, tipoUsuario
-                FROM Usuario INNER JOIN TipoUsuario USING(idTipoUsuario)
+        $sql = 'SELECT idUsuario, nombres, apellidos, DUI, correo, username, nivel
+                FROM Usuario
+                INNER JOIN Nivel USING(idNivel)
                 WHERE idUsuario = ?';
         $params = array($_SESSION['idUsuario']);
         return Database::getRow($sql, $params);
@@ -190,9 +207,9 @@ class Usuarios extends Validator
     public function editProfile()
     {
         $sql = 'UPDATE Usuario
-                SET nombres = ?, apellidos = ?, DUI = ?, correo = ?, user = ?, idTipoUsuario
+                SET nombres = ?, apellidos = ?, DUI = ?, correo = ?, user = ?, idTipoUsuario = ?, idNivel = ? 
                 WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->dui, $this->correo, $this->user, $this->tipo, $_SESSION['idUsuario']);
+        $params = array($this->nombres, $this->apellidos, $this->dui, $this->correo, $this->user, $this->tipo, $this->nivel, $_SESSION['idUsuario']);
         return Database::executeRow($sql, $params);
     }
 
@@ -201,8 +218,10 @@ class Usuarios extends Validator
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT idUsuario, nombres, apellidos, DUI, correo, username, tipoUsuario
-                FROM Usuario INNER JOIN TipoUsuario USING(idTipoUsuario)
+        $sql = 'SELECT idUsuario, nombres, apellidos, DUI, correo, username, tipoUsuario, nivel
+                FROM Usuario 
+                INNER JOIN TipoUsuario USING(idTipoUsuario)
+                INNER JOIN Nivel USING(idNivel)
                 WHERE apellidos ILIKE ? OR nombres ILIKE ?
                 ORDER BY apellidos';
         $params = array("%$value%", "%$value%");
@@ -213,16 +232,18 @@ class Usuarios extends Validator
     {
         // Se transforma la contraseña a una cadena de texto de longitud fija mediante el algoritmo por defecto.
         $hash = password_hash($this->passwrd, PASSWORD_DEFAULT);
-        $sql = 'INSERT INTO Usuario(nombres, apellidos, DUI, correo, username, passwrd, idTipoUsuario)
-                VALUES(?, ?, ?, ?, ?)';
-        $params = array($this->nombres, $this->apellidos, $this->dui, $this->correo, $this->user, $this->passwrd, $hash);
+        $sql = 'INSERT INTO Usuario(nombres, apellidos, DUI, correo, username, passwrd, idTipoUsuario, idNivel)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombres, $this->apellidos, $this->dui, $this->correo, $this->user, $hash, $this->tipo, $this->nivel);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT idUsuario, nombres, apellidos, DUI, correo, username, tipoUsuario
-                FROM Usuario INNER JOIN TipoUsuario USING(idTipoUsuario)
+        $sql = 'SELECT idUsuario, nombres, apellidos, DUI, correo, username, tipoUsuario, nivel
+                FROM Usuario 
+                INNER JOIN TipoUsuario USING(idTipoUsuario)
+                INNER JOIN Nivel USING(idNivel)
                 ORDER BY apellidos';
         $params = null;
         return Database::getRows($sql, $params);
@@ -230,8 +251,8 @@ class Usuarios extends Validator
 
     public function readOne()
     {
-        $sql = 'SELECT idUsuario, nombres, apellidos, DUI, correo, username, tipoUsuario
-                FROM Usuario INNER JOIN TipoUsuario USING(idTipoUsuario)
+        $sql = 'SELECT idUsuario, nombres, apellidos, DUI, correo, username, idTipoUsuario, idNivel
+                FROM Usuario 
                 WHERE idusuario = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
