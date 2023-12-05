@@ -11,7 +11,7 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
         <form method="post" id="session-form">
             <div class="input-field col s12 m6 offset-m3">
                 <i class="material-icons prefix">person_pin</i>
-                <input id="usuario" type="text" name="alias" class="validate" required/>
+                <input id="usuario" type="text" name="usuario" class="validate" required/>
                 <label for="usuario">Usuario</label>
             </div>
             <div class="input-field col s12 m6 offset-m3">
