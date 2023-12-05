@@ -1,4 +1,3 @@
-// Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_USUARIOS = '../../app/api/admin/usuarios.php?action=';
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
