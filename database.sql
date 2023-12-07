@@ -98,6 +98,12 @@ CREATE TABLE DetallePrestamo(
 	CONSTRAINT fk_estadoprestamo FOREIGN KEY (idEstadoPrestamo) REFERENCES EstadoPrestamo(idEstadoPrestamo)
 );
 
+ALTER TABLE Equipo
+ADD COLUMN idMarca INT NOT NULL,
+ADD CONSTRAINT fk_marca
+FOREIGN KEY (idMarca)
+REFERENCES Marca (idMarca);
+
 INSERT INTO Marca(nombreMarca) VALUES ('Dell'),('HP'),('Lenovo'),('XTech'),('Epson'),('Apple'),('Xiaomi'),('Samsung'),('AOC'),('Compac');
 
 INSERT INTO Condicion(condicion) VALUES ('Nuevo'),('Inservible'),('Desechado');

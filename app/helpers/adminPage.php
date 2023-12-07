@@ -49,7 +49,7 @@ class Dashboard_Page
                                     <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                                     <ul class="right hide-on-med-and-down">
                                         <li><a href="productos.php"><i class="material-icons left">devices</i>Equipos</a></li>
-                                        <li><a href="categorias.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
+                                        <li><a href="tipos.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
                                         <li><a href="clientes.php"><i class="material-icons left">account_balance_wallet</i>Comprados</a></li>
                                         <li><a href="clientes.php"><i class="material-icons left">description</i>Donados</a></li>
                                         <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
@@ -68,7 +68,7 @@ class Dashboard_Page
                             <a href="main.php" class="brand-logo"><img src="../../resources/img/FPA.png" weight="50" height="50"></a>
                             <li><a><i class=""></i></a></li>
                             <li><a href="productos.php"><i class="material-icons left">devices</i>Equipos</a></li>
-                            <li><a href="categorias.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
+                            <li><a href="tipos.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
                             <li><a href="clientes.php"><i class="material-icons left">account_balance_wallet</i>Comprados</a></li>
                             <li><a href="clientes.php"><i class="material-icons left">description</i>Donados</a></li>
                             <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
@@ -145,7 +145,7 @@ class Dashboard_Page
                         <div class="container">
                             <div class="row">
                                 <div class="col s12 m6 l6">
-                                    <h5 class="white-text">Dashboard</h5>
+                                    <h5 class="white-text">Adminitración</h5>
                                 </div>
                             
                             </div>
