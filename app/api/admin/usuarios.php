@@ -12,7 +12,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'error' => 0, 'message' => null, 'exception' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idUsuario'])) {
+    if (isset($_SESSION['idusuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'logOut':
@@ -277,7 +277,7 @@ if (isset($_GET['action'])) {
                     if ($usuario->checkPassword($_POST['passwrd'])) {
                         $result['status'] = 1;
                         $result['message'] = 'Autenticación correcta';
-                        $_SESSION['idUsuario'] = $usuario->getId();
+                        $_SESSION['idusuario'] = $usuario->getId();
                         $_SESSION['username'] = $usuario->getUser();
                     } else {
                         if (Database::getException()) {

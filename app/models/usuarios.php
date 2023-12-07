@@ -164,7 +164,7 @@ class Usuarios extends Validator
         $sql = 'SELECT idUsuario FROM Usuario WHERE username = ?';
         $params = array($user);
         if ($data = Database::getRow($sql, $params)) {
-            $this->id = $data['idUsuario'];
+            $this->id = $data['idusuario'];
             $this->user = $user;
             return true;
         } else {
@@ -172,13 +172,13 @@ class Usuarios extends Validator
         }
     }
 
-    public function checkPassword($password)
+    public function checkPassword($passwrd)
     {
-        $sql = 'SELECT passwrd FROM Usuario WHERE idUsuario = ?';
+        $sql = 'SELECT passwrd FROM usuario WHERE idusuario = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
-        if (password_verify($password, $data['passwrd'])) {
+        if ($passwrd === $data['passwrd']) {
             return true;
         } else {
             return false;
@@ -189,8 +189,8 @@ class Usuarios extends Validator
     {
         // Se transforma la contraseña a una cadena de texto de longitud fija mediante el algoritmo por defecto.
         $hash = password_hash($this->passwrd, PASSWORD_DEFAULT);
-        $sql = 'UPDATE Usuario SET passwrd = ? WHERE idUsuario = ?';
-        $params = array($hash, $_SESSION['idUsuario']);
+        $sql = 'UPDATE usuario SET passwrd = ? WHERE idusuario = ?';
+        $params = array($hash, $_SESSION['idusuario']);
         return Database::executeRow($sql, $params);
     }
 
@@ -208,7 +208,7 @@ class Usuarios extends Validator
     {
         $sql = 'UPDATE Usuario
                 SET nombres = ?, apellidos = ?, DUI = ?, correo = ?, user = ?, idTipoUsuario = ?, idNivel = ? 
-                WHERE id_usuario = ?';
+                WHERE idUsuario = ?';
         $params = array($this->nombres, $this->apellidos, $this->dui, $this->correo, $this->user, $this->tipo, $this->nivel, $_SESSION['idUsuario']);
         return Database::executeRow($sql, $params);
     }

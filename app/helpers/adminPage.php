@@ -34,7 +34,7 @@ class Dashboard_Page
         // Se obtiene el nombre del archivo de la página web actual.
         $filename = basename($_SERVER['PHP_SELF']);
         // Se comprueba si existe una sesión de administrador para mostrar el menú de opciones, de lo contrario se muestra un menú vacío.
-        if (isset($_SESSION['idUsuario'])) {
+        if (isset($_SESSION['idusuario'])) {
             // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
             if ($filename != 'index.php' && $filename != 'register.php') {
                 // Se llama al método que contiene el código de las cajas de dialogo (modals).
@@ -48,9 +48,10 @@ class Dashboard_Page
                                     <a href="main.php" class="brand-logo"><img src="../../resources/img/FPA_Blanco.png" height="60"></a>
                                     <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                                     <ul class="right hide-on-med-and-down">
-                                        <li><a href="productos.php"><i class="material-icons left">shop</i>Productos</a></li>
-                                        <li><a href="categorias.php"><i class="material-icons left">shop_two</i>Categorías</a></li>
-                                        <li><a href="clientes.php"><i class="material-icons left">contacts</i>Clientes</a></li>
+                                        <li><a href="productos.php"><i class="material-icons left">devices</i>Equipos</a></li>
+                                        <li><a href="categorias.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
+                                        <li><a href="clientes.php"><i class="material-icons left">account_balance_wallet</i>Comprados</a></li>
+                                        <li><a href="clientes.php"><i class="material-icons left">description</i>Donados</a></li>
                                         <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
                                         <li><a href="#" class="dropdown-trigger" data-target="dropdown"><i class="material-icons left">verified_user</i>Cuenta: <b>' . $_SESSION['username'] . '</b></a></li>
                                     </ul>
@@ -66,10 +67,11 @@ class Dashboard_Page
                             <li><a><i class="material-icons"></i></a></li>
                             <a href="main.php" class="brand-logo"><img src="../../resources/img/FPA.png" weight="50" height="50"></a>
                             <li><a><i class=""></i></a></li>
-                            <li><a href="productos.php"><i class="material-icons">shop</i>Productos</a></li>
-                            <li><a href="categorias.php"><i class="material-icons">shop_two</i>Categorías</a></li>
-                            <li><a href="clientes.php"><i class="material-icons">contacts</i>Clientes</a></li>
-                            <li><a href="usuarios.php"><i class="material-icons">group</i>Usuarios</a></li>
+                            <li><a href="productos.php"><i class="material-icons left">devices</i>Equipos</a></li>
+                            <li><a href="categorias.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
+                            <li><a href="clientes.php"><i class="material-icons left">account_balance_wallet</i>Comprados</a></li>
+                            <li><a href="clientes.php"><i class="material-icons left">description</i>Donados</a></li>
+                            <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
                             <li><a class="dropdown-trigger" href="#" data-target="dropdown-mobile"><i class="material-icons">verified_user</i>Cuenta: <b>' . $_SESSION['username'] . '</b></a></li>
                         </ul>
                         <ul id="dropdown-mobile" class="dropdown-content">
@@ -108,72 +110,6 @@ class Dashboard_Page
         }
     }
 
-    public static function headerTemplateLogin($title)
-    {
-        // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en las páginas web.
-        session_start();
-        // Se imprime el código HTML de la cabecera del documento.
-        print('
-            <!DOCTYPE html>
-            <html lang="es">
-                <head>
-                    <meta charset="utf-8">
-                    <title>Dashboard - ' . $title . '</title>
-                    <link type="image/png" rel="icon" href="../../resources/img/pc.png"/>
-                    <link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css"/>
-                    <link type="text/css" rel="stylesheet" href="../../resources/css/material_icons.css"/>
-                    <link type="text/css" rel="stylesheet" href="../../resources/css/dashboard.css"/>
-                    <link type="text/css" rel="stylesheet" href="../../resources/css/vanilla-dataTables.min.css"/>
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                </head>
-                <body>
-        ');
-        // Se obtiene el nombre del archivo de la página web actual.
-        $filename = basename($_SERVER['PHP_SELF']);
-        // Se comprueba si existe una sesión de administrador para mostrar el menú de opciones, de lo contrario se muestra un menú vacío.
-        if (isset($_SESSION['idUsuario'])) {
-            // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
-            if ($filename != 'index.php' && $filename != 'register.php') {
-                // Se llama al método que contiene el código de las cajas de dialogo (modals).
-                self::modals();
-                // Se imprime el código HTML para el encabezado del documento con el menú de opciones.
-                print('
-                    <header>
-                        <div class="navbar-fixed">
-                            <nav class="light-blue darken-1">
-                                <div class="nav-wrapper">
-                                </div>
-                            </nav>
-                        </div>
-                    </header>
-                    <main class="container">
-                        <h3 class="center-align">' . $title . '</h3>
-                ');
-            } else {
-                header('location: main.php');
-            }
-        } else {
-            // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para direccionar a index.php, de lo contrario se muestra un menú vacío.
-            if ($filename != 'index.php' && $filename != 'register.php') {
-                header('location: index.php');
-            } else {
-                // Se imprime el código HTML para el encabezado del documento con un menú vacío cuando sea iniciar sesión o registrar el primer usuario.
-                print('
-                    <header>
-                        <div class="navbar-fixed">
-                            <nav class="blue darken-1">
-                                <div class="nav-wrapper">
-                                    <a href="index.php" class="brand-logo"><img src="../../resources/img/FPA_Blanco.png" height="60"></a>
-                                </div>
-                            </nav>
-                        </div>
-                    </header>
-                    <main class="container">
-                        <h3 class="center-align">' . $title . '</h3>
-                ');
-            }
-        }
-    }
 
     /*
     *   Método para imprimir la plantilla del pie.
@@ -185,7 +121,7 @@ class Dashboard_Page
     public static function footerTemplate($controller)
     {
         // Se comprueba si existe una sesión de administrador para imprimir el pie respectivo del documento.
-        if (isset($_SESSION['idUsuario'])) {
+        if (isset($_SESSION['idusuario'])) {
             $scripts = '
                 <script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
                 <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
@@ -226,52 +162,6 @@ class Dashboard_Page
             </html>
         ');
     }
-
-    public static function footerTemplateLogin($controller)
-    {
-        // Se comprueba si existe una sesión de administrador para imprimir el pie respectivo del documento.
-        if (isset($_SESSION['idUsuario'])) {
-            $scripts = '
-                <script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
-                <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
-                <script type="text/javascript" src="../../resources/js/vanilla-dataTables.min.js"></script>
-                <script type="text/javascript" src="../../app/helpers/components.js"></script>
-                <script type="text/javascript" src="../../app/controllers/admin/initialization.js"></script>
-                <script type="text/javascript" src="../../app/controllers/admin/account.js"></script>
-                <script type="text/javascript" src="../../app/controllers/admin/' . $controller . '"></script>
-            ';
-        } else {
-            $scripts = '
-                <script type="text/javascript" src="../../resources/js/materialize.min.js"></script>
-                <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
-                <script type="text/javascript" src="../../app/helpers/components.js"></script>
-                <script type="text/javascript" src="../../app/controllers/admin/' . $controller . '"></script>
-            ';
-        }
-        print('
-                    </main>
-                    <footer class="page-footer blue darken-1">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col s12 m6 l6">
-                                    <h5 class="white-text">Iniciar Sesión</h5>
-                                </div>
-                            
-                            </div>
-                        </div>
-                        <div class="footer-copyright">
-                            <div class="container">
-                                <span>© Fundacion Padre Arrupe, todos los derechos reservados.</span>
-                                
-                            </div>
-                        </div>
-                    </footer>
-                    ' . $scripts . '
-                </body>
-            </html>
-        ');
-    }
-
     /*
     *   Método para imprimir las cajas de dialogo (modals) de editar pefil y cambiar contraseña.
     */
