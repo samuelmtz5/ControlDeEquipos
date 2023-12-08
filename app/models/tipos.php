@@ -71,7 +71,6 @@ class Tipos extends Validator {
 
     public function updateRow()
     {
-        // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
         $sql = 'UPDATE TipoEquipo
                 SET tipoequipo = ?
                 WHERE idtipoequipo = ?';

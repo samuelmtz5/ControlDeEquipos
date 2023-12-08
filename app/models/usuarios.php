@@ -14,9 +14,6 @@ class Usuarios extends Validator
     private $tipo = null;
     private $nivel = null;
 
-    /*
-    *   Métodos para validar y asignar valores de los atributos.
-    */
     public function setId($value)
     {
         if ($this->validateNaturalNumber($value)) {
@@ -98,9 +95,6 @@ class Usuarios extends Validator
         }
     }
 
-    /*
-    *   Métodos para obtener valores de los atributos.
-    */
     public function getId()
     {
         return $this->id;
@@ -142,9 +136,6 @@ class Usuarios extends Validator
         return $this->nivel;
     }
 
-    /*
-    *   Métodos para gestionar la cuenta del usuario.
-    */
     public function checkUser($user)
     {
         $sql = 'SELECT idUsuario FROM Usuario WHERE username = ?';
@@ -196,9 +187,6 @@ class Usuarios extends Validator
         return Database::executeRow($sql, $params);
     }
 
-    /*
-    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
-    */
     public function searchRows($value)
     {
         $sql = 'SELECT idUsuario, nombres, apellidos, correo, username, tipoUsuario, nivel

@@ -1,7 +1,5 @@
 <?php
-// Se incluye la clase con las plantillas del documento.
 require_once('../../app/helpers/adminPage.php');
-// Se imprime la plantilla del encabezado enviando el título de la página web.
 Dashboard_Page::headerTemplate('Iniciar sesión');
 ?>
 
@@ -27,6 +25,5 @@ Dashboard_Page::headerTemplate('Iniciar sesión');
 </div>
 
 <?php
-// Se imprime la plantilla del pie enviando el nombre del controlador para la página web.
 Dashboard_Page::footerTemplate('index.js');
 ?>

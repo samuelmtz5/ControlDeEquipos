@@ -281,7 +281,7 @@ if (isset($_GET['action'])) {
                     if (Database::getException()) {
                         $result['exception'] = Database::getException();
                     } else {
-                        $result['exception'] = 'Alias incorrecto';
+                        $result['exception'] = 'Usuario incorrecto';
                     }
                 }
                 break;

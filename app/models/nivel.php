@@ -71,7 +71,6 @@ class Nivel extends Validator {
 
     public function updateRow()
     {
-        // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
         $sql = 'UPDATE Nivel
                 SET nivel = ?
                 WHERE idnivel = ?';
