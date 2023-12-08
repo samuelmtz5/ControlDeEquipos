@@ -124,3 +124,34 @@ VALUES('Administrador','Administrador','00000000-1','administrador@gmail.com','a
 INSERT INTO EstadoPrestamo(estadoPrestamo) VALUES ('Pendiente'),('Completado');
 
 ALTER TABLE usuario DROP COLUMN dui
+
+INSERT INTO equipo(modelo,serie,activo,idtipoequipo,idaquisicion,idcondicion,idencargado,idnivel,idmarca)
+VALUES('Probook','5CD043GV72','009269',1,1,1,5,6,2)
+
+ALTER TABLE Equipo
+RENAME COLUMN idaquisicion TO idadquisicion;
+
+ALTER TABLE Equipo
+RENAME COLUMN idencargado TO idusuario;
+
+SELECT idUsuario, nombres, apellidos,  correo, username, nivel
+                FROM Usuario
+                INNER JOIN Nivel USING(idNivel)
+				
+SELECT idequipo, modelo, serie, activo, tipoequipo, adquisicion, condicion, nombres, nombremarca, nivel
+FROM equipo 
+INNER JOIN TipoEquipo USING(idTipoEquipo)
+INNER JOIN AdquisicionEquipo USING(idAdquisicion)
+INNER JOIN Condicion USING(idCondicion)
+INNER JOIN Usuario USING(idusuario)
+INNER JOIN Marca USING(idmarca)
+INNER JOIN Nivel USING(idnivel)
+
+SELECT e.idequipo, e.modelo, e.serie, e.activo, te.tipoequipo, ae.adquisicion, c.condicion, u.nombres, m.nombremarca, n.nivel
+FROM equipo e
+INNER JOIN TipoEquipo te ON e.idTipoEquipo = te.idTipoEquipo
+INNER JOIN AdquisicionEquipo ae ON e.idAdquisicion = ae.idAdquisicion
+INNER JOIN Condicion c ON e.idCondicion = c.idCondicion
+INNER JOIN Usuario u ON e.idusuario = u.idusuario
+INNER JOIN Marca m ON e.idmarca = m.idmarca
+INNER JOIN Nivel n ON e.idnivel = n.idnivel;
