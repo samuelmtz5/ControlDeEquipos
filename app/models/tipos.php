@@ -63,8 +63,8 @@ class Tipos extends Validator {
     public function readOne()
     {
         $sql = 'SELECT idtipoequipo, tipoequipo
-                FROM TipoEquipo
-                WHERE tipoequiop = ?';
+                FROM tipoequipo
+                WHERE idtipoequipo = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }

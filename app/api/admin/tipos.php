@@ -73,7 +73,7 @@ if (isset($_GET['action'])) {
                         }
                     }
                 } else {
-                    $result['exception'] = 'Tipo incorrecta';
+                    $result['exception'] = 'Tipo incorrecto';
                 }
                 break;
             case 'update':
