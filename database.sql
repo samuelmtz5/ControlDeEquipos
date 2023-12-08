@@ -122,3 +122,5 @@ VALUES('Administrador','Administrador','00000000-1','administrador@gmail.com','a
 	  ('Samuel Eduardo','Magaña Martínez','06508618-4','samuelmartinez5516@gmail.com','samuelmtz5','210503',1,6);
 
 INSERT INTO EstadoPrestamo(estadoPrestamo) VALUES ('Pendiente'),('Completado');
+
+ALTER TABLE usuario DROP COLUMN dui
