@@ -39,7 +39,6 @@ if (isset($_GET['action'])) {
                 if ($usuario->setNombres($_POST['nombres_perfil'])) {
                     if ($usuario->setApellidos($_POST['apellidos_perfil'])) {
                         if ($usuario->setCorreo($_POST['correo_perfil'])) {
-                            if($usuario->setDUI($_POST['DUI_perfil'])){
                                 if ($usuario->setUser($_POST['username_perfil'])) {
                                     if($usuario->setTipo($_POST['idTipo_perfil'])){
                                         if($usuario->setNivel($_POST['idNivel_perfil'])){
@@ -59,9 +58,6 @@ if (isset($_GET['action'])) {
                                 } else {
                                     $result['exception'] = 'Alias incorrecto';
                                 }
-                            }else{
-                                $result['exception'] = 'DUI Incorrecto';
-                            }
                         } else {
                             $result['exception'] = 'Correo incorrecto';
                         }
@@ -135,9 +131,8 @@ if (isset($_GET['action'])) {
                 if ($usuario->setNombres($_POST['nombres'])) {
                     if ($usuario->setApellidos($_POST['apellidos'])) {
                         if ($usuario->setCorreo($_POST['correo'])) {
-                            if($usuario->setDUI($_POST['DUI'])){
-                                if($usuario->setTipo($_POST['idTipo'])){
-                                    if($usuario->setNivel($_POST['idNivel'])){
+                                if($usuario->setTipo($_POST['Tipo'])){
+                                    if($usuario->setNivel($_POST['Nivel'])){
                                         if ($usuario->setUser($_POST['username'])) {
                                             if ($_POST['passwrd'] == $_POST['confirmar_clave']) {
                                                 if ($usuario->setPasswrd($_POST['passwrd'])) {
@@ -162,9 +157,6 @@ if (isset($_GET['action'])) {
                                 }else{
                                     $result['exception'] = 'Tipo Incorrecto';
                                 }
-                            }else{
-                                $result['exception'] = 'DUI Incorrecto';
-                            }
                         } else {
                             $result['exception'] = 'Correo incorrecto';
                         }
@@ -196,10 +188,10 @@ if (isset($_GET['action'])) {
                     if ($usuario->readOne()) {
                         if ($usuario->setNombres($_POST['nombres'])) {
                             if ($usuario->setApellidos($_POST['apellidos'])) {
-                                if ($usuario->setCorreo($_POST['correo'])) {
-                                    if($usuario->setDUI($_POST['DUI'])){
-                                        if($usuario->setTipo($_POST['idTipo'])){
-                                            if($usuario->setNivel($_POST['idNivel'])){
+                                if($usuario->setUser($_POST['username'])){
+                                    if ($usuario->setCorreo($_POST['correo'])) {    
+                                        if($usuario->setTipo($_POST['Tipo'])){
+                                            if($usuario->setNivel($_POST['Nivel'])){
                                                 if ($usuario->updateRow()) {
                                                     $result['status'] = 1;
                                                     $result['message'] = 'Usuario modificado correctamente';
@@ -212,12 +204,11 @@ if (isset($_GET['action'])) {
                                         }else{
                                             $result['exception'] = 'Tipo Incorrecto';
                                         }
-                                    }else{
-                                        $result['exception'] = 'DUI Incorrecto';
-                                    }
-                                    
                                 } else {
                                     $result['exception'] = 'Correo incorrecto';
+                                }
+                                }else{
+                                    $result['exception'] = 'Usuario Incorrecto';
                                 }
                             } else {
                                 $result['exception'] = 'Apellidos incorrectos';
@@ -233,7 +224,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'delete':
-                if ($_POST['idUsuario'] != $_SESSION['idUsuario']) {
+                if ($_POST['idUsuario'] != $_SESSION['idusuario']) {
                     if ($usuario->setId($_POST['idUsuario'])) {
                         if ($usuario->readOne()) {
                             if ($usuario->deleteRow()) {

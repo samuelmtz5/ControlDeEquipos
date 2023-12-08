@@ -145,7 +145,7 @@ class Dashboard_Page
                         <div class="container">
                             <div class="row">
                                 <div class="col s12 m6 l6">
-                                    <h5 class="white-text">Adminitración</h5>
+                                    <h5 class="white-text">Administración</h5>
                                 </div>
                             
                             </div>

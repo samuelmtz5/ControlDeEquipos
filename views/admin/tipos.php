@@ -2,7 +2,7 @@
 // Se incluye la clase con las plantillas del documento.
 require_once('../../app/helpers/adminPage.php');
 // Se imprime la plantilla del encabezado enviando el título de la página web.
-Dashboard_Page::headerTemplate('Administrar Tipos de Equipos');
+Dashboard_Page::headerTemplate('Tipos de Equipos');
 ?>
 
 <div class="row">
