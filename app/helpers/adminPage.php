@@ -48,10 +48,10 @@ class Dashboard_Page
                                     <a href="main.php" class="brand-logo"><img src="../../resources/img/FPA_Blanco.png" height="60"></a>
                                     <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                                     <ul class="right hide-on-med-and-down">
-                                        <li><a href="productos.php"><i class="material-icons left">devices</i>Equipos</a></li>
+                                        <li><a href="equipos.php"><i class="material-icons left">devices</i>Equipos</a></li>
                                         <li><a href="tipos.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
-                                        <li><a href="clientes.php"><i class="material-icons left">account_balance_wallet</i>Comprados</a></li>
-                                        <li><a href="clientes.php"><i class="material-icons left">description</i>Donados</a></li>
+                                        <li><a href=""><i class="material-icons left">account_balance_wallet</i>Comprados</a></li>
+                                        <li><a href=""><i class="material-icons left">description</i>Donados</a></li>
                                         <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
                                         <li><a href="#" class="dropdown-trigger" data-target="dropdown"><i class="material-icons left">verified_user</i>Cuenta: <b>' . $_SESSION['username'] . '</b></a></li>
                                     </ul>
@@ -67,10 +67,10 @@ class Dashboard_Page
                             <li><a><i class="material-icons"></i></a></li>
                             <a href="main.php" class="brand-logo"><img src="../../resources/img/FPA.png" weight="50" height="50"></a>
                             <li><a><i class=""></i></a></li>
-                            <li><a href="productos.php"><i class="material-icons left">devices</i>Equipos</a></li>
+                            <li><a href="equipos.php"><i class="material-icons left">devices</i>Equipos</a></li>
                             <li><a href="tipos.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
-                            <li><a href="clientes.php"><i class="material-icons left">account_balance_wallet</i>Comprados</a></li>
-                            <li><a href="clientes.php"><i class="material-icons left">description</i>Donados</a></li>
+                            <li><a href=""><i class="material-icons left">account_balance_wallet</i>Comprados</a></li>
+                            <li><a href=""><i class="material-icons left">description</i>Donados</a></li>
                             <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
                             <li><a class="dropdown-trigger" href="#" data-target="dropdown-mobile"><i class="material-icons">verified_user</i>Cuenta: <b>' . $_SESSION['username'] . '</b></a></li>
                         </ul>
@@ -152,7 +152,7 @@ class Dashboard_Page
                         </div>
                         <div class="footer-copyright">
                             <div class="container">
-                                <span>©Fundacion Padre Arrupe, todos los derechos reservados.</span>
+                                <span>©Fundacion Padre Arrupe de El Salvador.</span>
                                 
                             </div>
                         </div>

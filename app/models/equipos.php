@@ -180,66 +180,58 @@ class Equipos extends Validator
                 INNER JOIN Condicion c ON e.idCondicion = c.idCondicion
                 INNER JOIN Usuario u ON e.idusuario = u.idusuario
                 INNER JOIN Marca m ON e.idmarca = m.idmarca
-                INNER JOIN Nivel n ON e.idnivel = n.idnivel';
+                INNER JOIN Nivel n ON e.idnivel = n.idnivel
+                WHERE e.serie ILIKE ? OR e.activo ILIKE ?';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function createRow()
     {
-        $sql = 'INSERT INTO productos(nombre_producto, descripcion_producto, precio_producto, imagen_producto, estado_producto, id_categoria, id_usuario)
-                VALUES(?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->descripcion, $this->precio, $this->imagen, $this->estado, $this->categoria, $_SESSION['id_usuario']);
+        $sql = 'INSERT INTO equipo(modelo, serie, activo, idtipoequipo, idadquisicion, idcondicion, idusuario, idmarca, idnivel)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->modelo, $this->serie, $this->activo, $this->tipoequipo, $this->adquisicion, $this->condicion, $this->encargado, $this->marca, $this->nivel);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_producto, imagen_producto, nombre_producto, descripcion_producto, precio_producto, nombre_categoria, estado_producto
-                FROM productos INNER JOIN categorias USING(id_categoria)
-                ORDER BY nombre_producto';
+        $sql = 'SELECT e.idequipo, e.modelo, e.serie, e.activo, te.tipoequipo, ae.adquisicion, c.condicion, u.nombres, m.nombremarca, n.nivel
+                FROM equipo e
+                INNER JOIN TipoEquipo te ON e.idTipoEquipo = te.idTipoEquipo
+                INNER JOIN AdquisicionEquipo ae ON e.idAdquisicion = ae.idAdquisicion
+                INNER JOIN Condicion c ON e.idCondicion = c.idCondicion
+                INNER JOIN Usuario u ON e.idusuario = u.idusuario
+                INNER JOIN Marca m ON e.idmarca = m.idmarca
+                INNER JOIN Nivel n ON e.idnivel = n.idnivel
+                ORDER BY e.activo';
         $params = null;
         return Database::getRows($sql, $params);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT id_producto, nombre_producto, descripcion_producto, precio_producto, imagen_producto, id_categoria, estado_producto
-                FROM productos
-                WHERE id_producto = ?';
+        $sql = 'SELECT idequipo, modelo, serie, activo, idtipoequipo, idadquisicion, idcondicion, idusuario, idmarca, idnivel
+                FROM equipo
+                WHERE idequipo = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow($current_image)
+    public function updateRow()
     {
-        // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
-        ($this->imagen) ? $this->deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
-
-        $sql = 'UPDATE productos
-                SET imagen_producto = ?, nombre_producto = ?, descripcion_producto = ?, precio_producto = ?, estado_producto = ?, id_categoria = ?
-                WHERE id_producto = ?';
-        $params = array($this->imagen, $this->nombre, $this->descripcion, $this->precio, $this->estado, $this->categoria, $this->id);
+        $sql = 'UPDATE equipo
+                SET modelo = ?, serie = ?, activo = ?, idtipoequipo = ?, idadquisicion = ?, idcondicion = ?, idusuario = ?, idmarca = ?, idnivel = ?
+                WHERE idequipo = ?';
+        $params = array($this->modelo, $this->serie, $this->activo, $this->tipoequipo, $this->adquisicion, $this->condicion, $this->encargado, $this->marca, $this->nivel, $this->id);
         return Database::executeRow($sql, $params);
     }
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM productos
-                WHERE id_producto = ?';
+        $sql = 'DELETE FROM equipo
+                WHERE idequipo = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
-    }
-
-    /*
-    *   Métodos para generar gráficas.
-    */
-    public function cantidadProductosCategoria()
-    {
-        $sql = 'SELECT nombre_categoria, COUNT(id_producto) cantidad
-                FROM productos INNER JOIN categorias USING(id_categoria)
-                GROUP BY nombre_categoria ORDER BY cantidad DESC';
-        $params = null;
-        return Database::getRows($sql, $params);
     }
 }

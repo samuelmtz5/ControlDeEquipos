@@ -1,6 +1,6 @@
 <?php
 require_once('../../app/helpers/adminPage.php');
-Dashboard_Page::headerTemplate('Iniciar sesión');
+Dashboard_Page::headerTemplate('Iniciar Sesión');
 ?>
 
 <div class="container">
