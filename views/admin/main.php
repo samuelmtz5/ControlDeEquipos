@@ -6,7 +6,10 @@ Dashboard_Page::headerTemplate('Bienvenido');
     <h4 class="center-align blue-text" id="greeting"></h4>
 </div>
 
-<img class="imageninicio" src="../../resources/img/fondoinicio.png" height="350" width="350">
+<center>
+    <img class="imageninicio" src="../../resources/img/fondoinicio.png" height="470" width="470">
+</center>
+
 
 
 <?php

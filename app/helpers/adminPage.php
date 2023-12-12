@@ -21,8 +21,8 @@ class Dashboard_Page
             <html lang="es">
                 <head>
                     <meta charset="utf-8">
-                    <title>Admin - ' . $title . '</title>
-                    <link type="image/png" rel="icon" href="../../resources/img/pc.png"/>
+                    <title>' . $title . '</title>
+                    <link type="image/png" rel="icon" href="../../resources/img/icono.png"/>
                     <link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css"/>
                     <link type="text/css" rel="stylesheet" href="../../resources/css/material_icons.css"/>
                     <link type="text/css" rel="stylesheet" href="../../resources/css/dashboard.css"/>
@@ -43,7 +43,7 @@ class Dashboard_Page
                 print('
                     <header>
                         <div class="navbar-fixed">
-                            <nav class="light-blue darken-1">
+                            <nav class="light-blue darken-2">
                                 <div class="nav-wrapper">
                                     <a href="main.php" class="brand-logo"><img src="../../resources/img/FPA_Blanco.png" height="60"></a>
                                     <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -95,7 +95,7 @@ class Dashboard_Page
                 print('
                     <header>
                         <div class="navbar-fixed">
-                            <nav class="blue darken-1">
+                            <nav class="blue darken-2">
                                 <div class="nav-wrapper">
                                     <a href="index.php" class="brand-logo"><img src="../../resources/img/FPA_Blanco.png" height="60"></a>
                                     <a href="index.php" class="brand-logo"><i class="material-icons"></i></a>
@@ -143,7 +143,7 @@ class Dashboard_Page
         <br>
         <br>
                     </main>
-                    <footer class="page-footer blue darken-1">
+                    <footer class="page-footer blue darken-2">
                         <div class="container">
                             <div class="row">
                                 <div class="col s12 m6 l6">

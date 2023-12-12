@@ -23,7 +23,7 @@ Dashboard_Page::headerTemplate('Tipos de Equipos');
     <thead>
         <tr>
             <th>NOMBRE</th>
-            <th>ACCIONES</th>
+            <th class="actions-column">ACCIONES</th>
         </tr>
     </thead>
     <tbody id="tbody-rows">

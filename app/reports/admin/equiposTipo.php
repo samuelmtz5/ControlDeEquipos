@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     if ($tipos->setId($_GET['id'])) {
         if ($rowTipos = $tipos->readOne()) {
             $pdf = new Report;
-            $pdf->startReport('Equipos del tipo '.$rowTipos['tipoequipo']);
+            $pdf->startReport('Equipos del Tipo '.$rowTipos['tipoequipo']);
             if ($dataEquipos = $tipos->readEquiposTipo()) {
                 $pdf->SetFillColor(225);
                 $pdf->SetFont('Arial', 'B', 11);
