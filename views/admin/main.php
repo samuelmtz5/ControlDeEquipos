@@ -1,6 +1,6 @@
 <?php
 require_once('../../app/helpers/adminPage.php');
-Dashboard_Page::headerTemplate('Bienvenido');
+Dashboard_Page::headerTemplate('Inicio');
 ?>
 <div class="row">
     <h4 class="center-align blue-text" id="greeting"></h4>
