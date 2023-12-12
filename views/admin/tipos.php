@@ -5,7 +5,7 @@ Dashboard_Page::headerTemplate('Tipos de Equipos');
 
 <div class="row">
     <form method="post" id="search-form">
-        <div class="input-field col s6 m4">
+        <div class="input-field col s6 m3">
             <i class="material-icons prefix">search</i>
             <input id="search" type="text" name="search" required/>
             <label for="search">Buscador</label>
@@ -19,7 +19,7 @@ Dashboard_Page::headerTemplate('Tipos de Equipos');
     </div>
 </div>
 
-<table class="responsive-table">
+<table class="highlight centered responsive-table">
     <thead>
         <tr>
             <th>NOMBRE</th>
@@ -36,9 +36,9 @@ Dashboard_Page::headerTemplate('Tipos de Equipos');
         <form method="post" id="save-form" enctype="multipart/form-data">
             <input class="hide" type="number" id="idtipoequipo" name="idtipoequipo"/>
             <div class="row">
-                <div class="input-field col s12 m6">
+                <div class="input-field col s12 m12">
                     <i class="material-icons prefix">note_add</i>
-                    <input id="tipoequipo" type="text" name="tipoequipo" class="validate" required/>
+                    <input id="tipoequipo" type="text" name="tipoequipo" class="validate" maxlength="30" required/>
                     <label for="tipoequipo">Nombre</label>
                 </div>
             </div>
@@ -51,5 +51,5 @@ Dashboard_Page::headerTemplate('Tipos de Equipos');
 </div>
 
 <?php
-Dashboard_Page::footerTemplate('tipos.js');
+Dashboard_Page::footerTemplate('tipoequipo.js');
 ?>

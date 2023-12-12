@@ -21,7 +21,7 @@ class Dashboard_Page
             <html lang="es">
                 <head>
                     <meta charset="utf-8">
-                    <title>Dashboard - ' . $title . '</title>
+                    <title>Admin - ' . $title . '</title>
                     <link type="image/png" rel="icon" href="../../resources/img/pc.png"/>
                     <link type="text/css" rel="stylesheet" href="../../resources/css/materialize.min.css"/>
                     <link type="text/css" rel="stylesheet" href="../../resources/css/material_icons.css"/>
@@ -140,6 +140,8 @@ class Dashboard_Page
             ';
         }
         print('
+        <br>
+        <br>
                     </main>
                     <footer class="page-footer blue darken-1">
                         <div class="container">

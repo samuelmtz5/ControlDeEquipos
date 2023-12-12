@@ -16,10 +16,11 @@ Dashboard_Page::headerTemplate('Equipos');
     </form>
     <div class="input-field center-align col s12 m4">
         <a href="#" onclick="openCreateDialog()" class="btn waves-effect indigo tooltipped" data-tooltip="Crear"><i class="material-icons">add_circle</i></a>
+        <a href="../../app/reports/admin/equipos.php" target="_blank" class="btn waves-effect amber tooltipped" data-tooltip="Reporte de Equipos por Tipo"><i class="material-icons">assignment</i></a>
     </div>
 </div>
 
-<table class="responsive-table">
+<table class="highlight centered responsive-table">
     <thead>
         <tr>
             <th>MARCA</th>
@@ -45,52 +46,52 @@ Dashboard_Page::headerTemplate('Equipos');
             <input class="hide" type="number" id="idEquipo" name="idEquipo"/>
             <div class="row">
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">person_pin</i>
+                    <i class="material-icons prefix">copyright</i>
                     <select id="Marca" name="Marca">
                     </select>
                     <label>Marca</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">person</i>
-                    <input id="Modelo" type="text" name="Modelo" class="validate" required/>
+                    <i class="material-icons prefix">important_devices</i>
+                    <input id="Modelo" type="text" name="Modelo" class="validate" maxlength="30" required/>
                     <label for="Modelo">Modelo</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">person</i>
-                    <input id="Serie" type="text" name="Serie" class="validate" required/>
+                    <i class="material-icons prefix">short_text</i>
+                    <input id="Serie" type="text" name="Serie" class="validate" maxlength="10" required/>
                     <label for="Serie">Serie</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">email</i>
-                    <input id="Activo" type="text" name="Activo" class="validate" required/>
+                    <i class="material-icons prefix">short_text</i>
+                    <input id="Activo" type="text" name="Activo" class="validate" maxlength="6" required/>
                     <label for="Activo">Activo</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">person_pin</i>
+                    <i class="material-icons prefix">phonelink</i>
                     <select id="Tipo" name="Tipo">
                     </select>
                     <label>Tipo</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">person_pin</i>
+                    <i class="material-icons prefix">shopping_cart</i>
                     <select id="Adquisicion" name="Adquisicion">
                     </select>
                     <label>Adquisición</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">person_pin</i>
+                    <i class="material-icons prefix">build</i>
                     <select id="Condicion" name="Condicion">
                     </select>
                     <label>Condición</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">person_pin</i>
+                    <i class="material-icons prefix">contact_mail</i>
                     <select id="Encargado" name="Encargado">
                     </select>
                     <label>Encargado</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">person_pin</i>
+                    <i class="material-icons prefix">school</i>
                     <select id="Nivel" name="Nivel">
                     </select>
                     <label>Nivel</label>

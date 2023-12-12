@@ -19,7 +19,7 @@ Dashboard_Page::headerTemplate('Usuarios');
     </div>
 </div>
 
-<table class="responsive-table">
+<table class="highlight centered responsive-table">
     <thead>
         <tr>
             <th>NOMBRES</th>
@@ -43,44 +43,44 @@ Dashboard_Page::headerTemplate('Usuarios');
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">person</i>
-                    <input id="nombres" type="text" name="nombres" class="validate" required/>
+                    <input id="nombres" type="text" name="nombres" class="validate" maxlength="20" required/>
                     <label for="nombres">Nombres</label>
                 </div>
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">person</i>
-                    <input id="apellidos" type="text" name="apellidos" class="validate" required/>
+                    <input id="apellidos" type="text" name="apellidos" class="validate" maxlength="20" required/>
                     <label for="apellidos">Apellidos</label>
                 </div>
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">email</i>
-                    <input id="correo" type="email" name="correo" class="validate" required/>
+                    <input id="correo" type="email" name="correo" class="validate" maxlength="50" required/>
                     <label for="correo">Correo</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">person_pin</i>
-                    <input id="username" type="text" name="username" class="validate" required/>
+                    <i class="material-icons prefix">contact_mail</i>
+                    <input id="username" type="text" name="username" class="validate" maxlength="10" required/>
                     <label for="username">Usuario</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">person_pin</i>
+                    <i class="material-icons prefix">supervisor_account</i>
                     <select id="Tipo" name="Tipo">
                     </select>
                     <label>Tipo</label>
                 </div>
                 <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">person_pin</i>
+                    <i class="material-icons prefix">school</i>
                     <select id="Nivel" name="Nivel">
                     </select>
                     <label>Nivel</label>
                 </div>
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">security</i>
-                    <input id="passwrd" type="password" name="passwrd" class="validate" required/>
+                    <input id="passwrd" type="password" name="passwrd" class="validate" maxlength="50" required/>
                     <label for="passwrd">Clave</label>
                 </div>
                 <div class="input-field col s12 m6">
                     <i id="iconopass" class="material-icons prefix">security</i>
-                    <input id="confirmar_clave" type="password" name="confirmar_clave" class="validate" required/>
+                    <input id="confirmar_clave" type="password" name="confirmar_clave" class="validate" maxlength="50" required/>
                     <label id="label" for="confirmar_clave">Confirmar clave</label>
                 </div>
             </div>
@@ -91,7 +91,6 @@ Dashboard_Page::headerTemplate('Usuarios');
         </form>
     </div>
 </div>
-
 <?php
 Dashboard_Page::footerTemplate('usuarios.js');
 ?>

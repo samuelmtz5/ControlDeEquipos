@@ -88,12 +88,12 @@ class Tipos extends Validator {
 
     public function readEquiposTipo()
     {
-        $sql = 'SELECT tipoequipo, idequipo, marca, modelo, activo
-                FROM Equipo 
-                INNER JOIN TipoEquipo USING(idtipoequipo)
-                INNER JOIN Marca USING(idmarca)
-                WHERE idtipoequipo = ?
-                ORDER BY activo';
+        $sql = 'SELECT t.tipoequipo, m.nombremarca, e.modelo, e.activo
+        FROM Equipo e
+        INNER JOIN TipoEquipo t on e.idTipoEquipo = t.idTipoEquipo
+        INNER JOIN Marca m ON e.idmarca = m.idmarca
+        WHERE e.idtipoequipo = ?
+        ORDER BY activo';
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
