@@ -85,4 +85,16 @@ class Condicion extends Validator {
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function readEquiposCondicion()
+    {
+        $sql = 'SELECT c.condicion, m.nombremarca, e.modelo, e.activo
+        FROM Equipo e
+        INNER JOIN condicion c on e.idcondicion = c.idcondicion
+        INNER JOIN Marca m ON e.idmarca = m.idmarca
+        WHERE c.idcondicion = ?
+        ORDER BY activo';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
 }

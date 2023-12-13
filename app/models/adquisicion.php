@@ -85,4 +85,16 @@ class Adquisicion extends Validator {
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function readEquiposAdq()
+    {
+        $sql = 'SELECT ad.adquisicion, m.nombremarca, e.modelo, e.activo
+        FROM Equipo e
+        INNER JOIN adquisicionequipo ad on e.idadquisicion = ad.idadquisicion
+        INNER JOIN Marca m ON e.idmarca = m.idmarca
+        WHERE ad.idadquisicion = ?
+        ORDER BY activo';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
 }

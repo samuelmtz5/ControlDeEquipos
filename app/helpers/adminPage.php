@@ -50,8 +50,8 @@ class Dashboard_Page
                                     <ul class="right hide-on-med-and-down">
                                         <li><a href="equipos.php"><i class="material-icons left">devices</i>Equipos</a></li>
                                         <li><a href="tipos.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
-                                        <li><a href=""><i class="material-icons left">account_balance_wallet</i>Comprados</a></li>
-                                        <li><a href=""><i class="material-icons left">description</i>Donados</a></li>
+                                        <li><a href="adquisicion.php"><i class="material-icons left">account_balance_wallet</i>Adquisiciones</a></li>
+                                        <li><a href="condicion.php"><i class="material-icons left">build</i>Condición</a></li>
                                         <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
                                         <li><a href="#" class="dropdown-trigger" data-target="dropdown"><i class="material-icons left">verified_user</i>Cuenta: <b>' . $_SESSION['username'] . '</b></a></li>
                                     </ul>
