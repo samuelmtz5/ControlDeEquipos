@@ -6,8 +6,17 @@ Dashboard_Page::headerTemplate('Bienvenido');
     <h4 class="center-align blue-text" id="greeting"></h4>
 </div>
 
+<style>
+    #imageninicio{
+        @media (min-width: 100%) {
+            width: 55%;
+            height: 55%;
+        }
+    }
+</style>
+
 <center>
-    <img class="imageninicio" src="../../resources/img/fondoinicio.png" height="470" width="470">
+    <img id="imageninicio" class="imageninicio" src="../../resources/img/fondoinicio.png" height="100%" width="100%">
 </center>
 
 
