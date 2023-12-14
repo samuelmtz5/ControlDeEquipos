@@ -171,19 +171,19 @@ class Usuarios extends Validator
     public function readProfile()
     {
         $sql = 'SELECT idUsuario, nombres, apellidos,  correo, username, nivel
-                FROM Usuario
+                FROM usuario
                 INNER JOIN Nivel USING(idNivel)
-                WHERE idUsuario = ?';
-        $params = array($_SESSION['idUsuario']);
+                WHERE idusuario = ?';
+        $params = array($_SESSION['idusuario']);
         return Database::getRow($sql, $params);
     }
 
     public function editProfile()
     {
         $sql = 'UPDATE Usuario
-                SET nombres = ?, apellidos = ?, correo = ?, user = ?, idTipoUsuario = ?, idNivel = ? 
-                WHERE idUsuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->user, $this->tipo, $this->nivel, $_SESSION['idUsuario']);
+                SET nombres = ?, apellidos = ?, correo = ?, username = ?
+                WHERE idusuario = ?';
+        $params = array($this->nombres, $this->apellidos, $this->correo, $this->user, $_SESSION['idusuario']);
         return Database::executeRow($sql, $params);
     }
 

@@ -234,4 +234,22 @@ class Equipos extends Validator
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function cantidadEquiposCondicion()
+    {
+        $sql = 'SELECT condicion, COUNT(idequipo) cantidad
+                FROM equipo INNER JOIN condicion USING(idcondicion)
+                GROUP BY condicion ORDER BY cantidad DESC';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
+    public function cantidadEquiposTipo()
+    {
+        $sql = 'SELECT tipoequipo, COUNT(idequipo) cantidad
+                FROM equipo INNER JOIN tipoequipo USING(idtipoequipo)
+                GROUP BY tipoequipo ORDER BY cantidad DESC';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
 }

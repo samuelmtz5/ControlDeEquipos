@@ -10,10 +10,10 @@ function openProfileDialog() {
         if (request.ok) {
             request.json().then(function (response) {
                 if (response.status) {
-                    document.getElementById('nombres_perfil').value = response.dataset.nombres_usuario;
-                    document.getElementById('apellidos_perfil').value = response.dataset.apellidos_usuario;
-                    document.getElementById('correo_perfil').value = response.dataset.correo_usuario;
-                    document.getElementById('alias_perfil').value = response.dataset.alias_usuario;
+                    document.getElementById('nombres').value = response.dataset.nombres;
+                    document.getElementById('apellidos').value = response.dataset.apellidos;
+                    document.getElementById('correo').value = response.dataset.correo;
+                    document.getElementById('username').value = response.dataset.username;
                     M.updateTextFields();
                 } else {
                     sweetAlert(2, response.exception, null);

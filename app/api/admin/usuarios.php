@@ -36,25 +36,17 @@ if (isset($_GET['action'])) {
                 break;
             case 'editProfile':
                 $_POST = $usuario->validateForm($_POST);
-                if ($usuario->setNombres($_POST['nombres_perfil'])) {
-                    if ($usuario->setApellidos($_POST['apellidos_perfil'])) {
-                        if ($usuario->setCorreo($_POST['correo_perfil'])) {
-                                if ($usuario->setUser($_POST['username_perfil'])) {
-                                    if($usuario->setTipo($_POST['idTipo_perfil'])){
-                                        if($usuario->setNivel($_POST['idNivel_perfil'])){
+                if ($usuario->setNombres($_POST['nombres'])) {
+                    if ($usuario->setApellidos($_POST['apellidos'])) {
+                        if ($usuario->setCorreo($_POST['correo'])) {
+                                if ($usuario->setUser($_POST['username'])) {
                                             if ($usuario->editProfile()) {
                                                 $result['status'] = 1;
                                                 $_SESSION['username'] = $usuario->getUser();
                                                 $result['message'] = 'Perfil modificado correctamente';
                                             } else {
                                                 $result['exception'] = Database::getException();
-                                            }
-                                        }else{
-                                            $result['exception'] = 'Nivel Incorrecto';
-                                        }  
-                                    }else{
-                                        $result['exception'] = 'Tipo Incorrecto';
-                                    }     
+                                            }    
                                 } else {
                                     $result['exception'] = 'Alias incorrecto';
                                 }
@@ -69,7 +61,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'changePassword':
-                if ($usuario->setId($_SESSION['idUsuario'])) {
+                if ($usuario->setId($_SESSION['idusuario'])) {
                     $_POST = $usuario->validateForm($_POST);
                     if ($usuario->checkPassword($_POST['passwrd_actual'])) {
                         if ($_POST['passwrd_1'] == $_POST['passwrd_2']) {

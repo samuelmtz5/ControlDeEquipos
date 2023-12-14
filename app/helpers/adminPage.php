@@ -69,8 +69,8 @@ class Dashboard_Page
                             <li><a><i class=""></i></a></li>
                             <li><a href="equipos.php"><i class="material-icons left">devices</i>Equipos</a></li>
                             <li><a href="tipos.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
-                            <li><a href=""><i class="material-icons left">account_balance_wallet</i>Comprados</a></li>
-                            <li><a href=""><i class="material-icons left">description</i>Donados</a></li>
+                            <li><a href="adquisicion.php"><i class="material-icons left">account_balance_wallet</i>Adquisiciones</a></li>
+                            <li><a href="condicion.php"><i class="material-icons left">build</i>Condicion</a></li>
                             <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
                             <li><a class="dropdown-trigger" href="#" data-target="dropdown-mobile"><i class="material-icons">verified_user</i>Cuenta: <b>' . $_SESSION['username'] . '</b></a></li>
                         </ul>
@@ -128,7 +128,7 @@ class Dashboard_Page
                 <script type="text/javascript" src="../../resources/js/vanilla-dataTables.min.js"></script>
                 <script type="text/javascript" src="../../app/helpers/components.js"></script>
                 <script type="text/javascript" src="../../app/controllers/admin/initialization.js"></script>
-                <script type="text/javascript" src="../../app/controllers/admin/account.js"></script>
+                <script type="text/javascript" src="../../app/controllers/admin/cuenta.js"></script>
                 <script type="text/javascript" src="../../app/controllers/admin/' . $controller . '"></script>
             ';
         } else {
@@ -179,23 +179,23 @@ class Dashboard_Page
                         <div class="row">
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">person</i>
-                                <input id="nombres_perfil" type="text" name="nombres_perfil" class="validate" required/>
-                                <label for="nombres_perfil">Nombres</label>
+                                <input id="nombres" type="text" name="nombres" class="validate" required/>
+                                <label for="nombres">Nombres</label>
                             </div>
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">person</i>
-                                <input id="apellidos_perfil" type="text" name="apellidos_perfil" class="validate" required/>
-                                <label for="apellidos_perfil">Apellidos</label>
+                                <input id="apellidos" type="text" name="apellidos" class="validate" required/>
+                                <label for="apellidos">Apellidos</label>
                             </div>
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">email</i>
-                                <input id="correo_perfil" type="email" name="correo_perfil" class="validate" required/>
-                                <label for="correo_perfil">Correo</label>
+                                <input id="correo" type="email" name="correo" class="validate" required/>
+                                <label for="correo">Correo</label>
                             </div>
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">person_pin</i>
-                                <input id="alias_perfil" type="text" name="alias_perfil" class="validate" required/>
-                                <label for="alias_perfil">Alias</label>
+                                <input id="username" type="text" name="username" class="validate" required/>
+                                <label for="username">Alias</label>
                             </div>
                         </div>
                         <div class="row center-align">
@@ -214,8 +214,8 @@ class Dashboard_Page
                         <div class="row">
                             <div class="input-field col s12 m6 offset-m3">
                                 <i class="material-icons prefix">security</i>
-                                <input id="clave_actual" type="password" name="clave_actual" class="validate" required/>
-                                <label for="clave_actual">Clave actual</label>
+                                <input id="passwrd_actual" type="password" name="passwrd_actual" class="validate" required/>
+                                <label for="passwrd_actual">Clave actual</label>
                             </div>
                         </div>
                         <div class="row center-align">
@@ -224,13 +224,13 @@ class Dashboard_Page
                         <div class="row">
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">security</i>
-                                <input id="clave_nueva_1" type="password" name="clave_nueva_1" class="validate" required/>
-                                <label for="clave_nueva_1">Clave</label>
+                                <input id="passwrd_1" type="password" name="passwrd_1" class="validate" required/>
+                                <label for="passwrd_1">Clave</label>
                             </div>
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">security</i>
-                                <input id="clave_nueva_2" type="password" name="clave_nueva_2" class="validate" required/>
-                                <label for="clave_nueva_2">Confirmar clave</label>
+                                <input id="passwrd_2" type="password" name="passwrd_2" class="validate" required/>
+                                <label for="passwrd_2">Confirmar clave</label>
                             </div>
                         </div>
                         <div class="row center-align">
