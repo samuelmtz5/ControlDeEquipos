@@ -12,146 +12,135 @@ CREATE DATABASE "ControlEquipos"
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;
 	
-	
-CREATE TABLE Marca(
-	idMarca SERIAL NOT NULL PRIMARY KEY,
-	nombreMarca VARCHAR(30) NOT NULL
+--creacion de tablas
+CREATE TABLE marca(
+	idmarca SERIAL NOT NULL PRIMARY KEY,
+	nombremarca VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE TipoEquipo(
-	idTipoEquipo SERIAL NOT NULL PRIMARY KEY,
-	tipoEquipo VARCHAR(30) NOT NULL
+CREATE TABLE tipoequipo(
+	idtipoequipo SERIAL NOT NULL PRIMARY KEY,
+	tipoequipo VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE Condicion(
-	idCondicion SERIAL NOT NULL PRIMARY KEY,
+CREATE TABLE condicion(
+	idcondicion SERIAL NOT NULL PRIMARY KEY,
 	condicion VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE AdquisicionEquipo(
-	idAdquisicion SERIAL NOT NULL PRIMARY KEY,
+CREATE TABLE adquisicionequipo(
+	idadquisicion SERIAL NOT NULL PRIMARY KEY,
 	adquisicion VARCHAR(30) NOT NULL
 );
 
 
-CREATE TABLE Nivel(
-	idNivel SERIAL NOT NULL PRIMARY KEY,
+CREATE TABLE nivel(
+	idnivel SERIAL NOT NULL PRIMARY KEY,
 	nivel VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE TipoUsuario(
-	idTipoUsuario SERIAL NOT NULL PRIMARY KEY,
-	tipoUsuario VARCHAR(30) NOT NULL
+CREATE TABLE tipousuario(
+	idtipousuario SERIAL NOT NULL PRIMARY KEY,
+	tipousuario VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE Prestamo(
-	idPrestamo SERIAL NOT NULL PRIMARY KEY,
-	fechaPrestamo DATE NOT NULL
+CREATE TABLE prestamo(
+	idprestamo SERIAL NOT NULL PRIMARY KEY,
+	fechaprestamo DATE NOT NULL
 );
 
-CREATE TABLE Usuario(
-	idUsuario SERIAL NOT NULL PRIMARY KEY,
+CREATE TABLE usuario(
+	idusuario SERIAL NOT NULL PRIMARY KEY,
 	nombres VARCHAR(20) NOT NULL,
 	apellidos VARCHAR(20) NOT NULL,
-	DUI VARCHAR(10) NOT NULL,
 	correo VARCHAR(50) NOT NULL,
 	username VARCHAR(10) NOT NULL,
 	passwrd VARCHAR(100) NOT NULL,
-	idTipoUsuario SERIAL NOT NULL,
-	CONSTRAINT fk_tipousuario FOREIGN KEY (idTipoUsuario) REFERENCES TipoUsuario(idTipoUsuario),
-	idNivel SERIAL NOT NULL,
-	CONSTRAINT fk_nivelusuario FOREIGN KEY (idNivel) REFERENCES Nivel(idNivel)
+	idtipousuario SERIAL NOT NULL,
+	CONSTRAINT fk_tipousuario FOREIGN KEY (idtipousuario) REFERENCES tipousuario(idtipousuario),
+	idnivel SERIAL NOT NULL,
+	CONSTRAINT fk_nivelusuario FOREIGN KEY (idnivel) REFERENCES nivel(idnivel)
 );
 
-CREATE TABLE Equipo(
-	idEquipo SERIAL NOT NULL PRIMARY KEY,
+CREATE TABLE equipo(
+	idequipo SERIAL NOT NULL PRIMARY KEY,
 	modelo VARCHAR(30) NOT NULL,
 	serie VARCHAR(10),
 	activo VARCHAR(6),
-	idTipoEquipo SERIAL NOT NULL,
-	CONSTRAINT fk_tipoequipo FOREIGN KEY (idTipoEquipo) REFERENCES TipoEquipo(idTipoEquipo),
-	idAquisicion SERIAL NOT NULL,
-	CONSTRAINT fk_adquisicion FOREIGN KEY (idAquisicion) REFERENCES AdquisicionEquipo(idAdquisicion),
-	idCondicion SERIAL NOT NULL,
-	CONSTRAINT fk_condicion FOREIGN KEY (idCondicion) REFERENCES Condicion(idCondicion),
-	idEncargado SERIAL,
-	CONSTRAINT fk_encargado FOREIGN KEY (idEncargado) REFERENCES Usuario(idUsuario),
-	idNivel SERIAL,
-	CONSTRAINT fk_nivelequipo FOREIGN KEY (idNivel) REFERENCES Nivel(idNivel)
+	idtipoequipo SERIAL NOT NULL,
+	CONSTRAINT fk_tipoequipo FOREIGN KEY (idtipoequipo) REFERENCES tipoequipo(idtipoequipo),
+	idadquisicion SERIAL NOT NULL,
+	CONSTRAINT fk_adquisicion FOREIGN KEY (idaquisicion) REFERENCES adquisicionEquipo(idadquisicion),
+	idcondicion SERIAL NOT NULL,
+	CONSTRAINT fk_condicion FOREIGN KEY (idcondicion) REFERENCES condicion(idcondicion),
+	idusuario SERIAL,
+	CONSTRAINT fk_encargado FOREIGN KEY (idusuario) REFERENCES usuario(idusuario),
+	idnivel SERIAL,
+	CONSTRAINT fk_nivelequipo FOREIGN KEY (idnivel) REFERENCES nivel(idnivel),
+	idmarca INT NOT NULL,
+	CONSTRAINT fk_marca FOREIGN KEY (idmarca) REFERENCES marca(idmarca)
  );
  
- CREATE TABLE EstadoPrestamo(
-	 idEstadoPrestamo SERIAL NOT NULL PRIMARY KEY,
-	 estadoPrestamo VARCHAR(10) NOT NULL
+ CREATE TABLE estadoprestamo(
+	 idestadoprestamo SERIAL NOT NULL PRIMARY KEY,
+	 estadoprestamo VARCHAR(10) NOT NULL
  );
 
-CREATE TABLE DetallePrestamo(
-	idPrestamo SERIAL NOT NULL,
-	CONSTRAINT fk_prestamo FOREIGN KEY (idPrestamo) REFERENCES Prestamo(idPrestamo),
-	idPrestador SERIAL NOT NULL,
-	CONSTRAINT fk_prestador FOREIGN KEY (idPrestador) REFERENCES Usuario(idUsuario),
-	idReceptor SERIAL NOT NULL,
-	CONSTRAINT fk_receptor FOREIGN KEY (idReceptor) REFERENCES Usuario(idUsuario),	
-	idEquipo SERIAL NOT NULL,
-	CONSTRAINT fk_equipoprestado FOREIGN KEY (idEquipo) REFERENCES Equipo(idEquipo),
-	idEstadoPrestamo SERIAL NOT NULL,
-	CONSTRAINT fk_estadoprestamo FOREIGN KEY (idEstadoPrestamo) REFERENCES EstadoPrestamo(idEstadoPrestamo)
+CREATE TABLE detalleprestamo(
+	idprestamo SERIAL NOT NULL,
+	CONSTRAINT fk_prestamo FOREIGN KEY (idprestamo) REFERENCES prestamo(idprestamo),
+	idprestador SERIAL NOT NULL,
+	CONSTRAINT fk_prestador FOREIGN KEY (idprestador) REFERENCES usuario(idusuario),
+	idreceptor SERIAL NOT NULL,
+	CONSTRAINT fk_receptor FOREIGN KEY (idreceptor) REFERENCES usuario(idusuario),	
+	idequipo SERIAL NOT NULL,
+	CONSTRAINT fk_equipoprestado FOREIGN KEY (idequipo) REFERENCES Equipo(idequipo),
+	idestadoprestamo SERIAL NOT NULL,
+	CONSTRAINT fk_estadoprestamo FOREIGN KEY (idestadoprestamo) REFERENCES estadoprestamo(idestadoprestamo)
 );
 
-ALTER TABLE Equipo
-ADD COLUMN idMarca INT NOT NULL,
-ADD CONSTRAINT fk_marca
-FOREIGN KEY (idMarca)
-REFERENCES Marca (idMarca);
+--llenado de tablas
+INSERT INTO marca(nombremarca) VALUES ('Dell'),('HP'),('Lenovo'),('XTech'),('Epson'),('Apple'),('Xiaomi'),('Samsung'),('AOC'),('Compac');
 
-INSERT INTO Marca(nombreMarca) VALUES ('Dell'),('HP'),('Lenovo'),('XTech'),('Epson'),('Apple'),('Xiaomi'),('Samsung'),('AOC'),('Compac');
+INSERT INTO condicion(condicion) VALUES ('Nuevo'),('Inservible'),('Desechado');
 
-INSERT INTO Condicion(condicion) VALUES ('Nuevo'),('Inservible'),('Desechado');
+INSERT INTO adquisicionequipo(adquisicion) VALUES ('Comprado'),('Donado');
 
-INSERT INTO AdquisicionEquipo(adquisicion) VALUES ('Comprado'),('Donado');
-
-INSERT INTO Nivel(nivel) VALUES ('Administración'),('Académica'),('Mantenimiento'),('Ingeniería'),('Clínica'),('Sistemas'),
+INSERT INTO nivel(nivel) VALUES ('Administración'),('Académica'),('Mantenimiento'),('Ingeniería'),('Clínica'),('Sistemas'),
 						 ('Básica'),('Parvularia'),('Tercer Ciclo'),('Bachillerato');
 
-INSERT INTO TipoUsuario(tipoUsuario) VALUES ('Administrador'),('Normal');
+INSERT INTO tipousuario(tipousuario) VALUES ('Administrador'),('Normal');
 
-INSERT INTO TipoEquipo(tipoEquipo) VALUES ('laptop'),('Monitor'),('Impresor');
+INSERT INTO tipoequipo(tipoequipo) VALUES ('laptop'),('Monitor'),('Impresor');
 
-INSERT INTO Usuario(nombres,apellidos,DUI,correo,username,passwrd,idTipoUsuario,idNivel) 
-VALUES('Administrador','Administrador','00000000-1','administrador@gmail.com','admon','S0p0rteIT2024',1,6),
-	  ('Samuel Eduardo','Magaña Martínez','06508618-4','samuelmartinez5516@gmail.com','samuelmtz5','210503',1,6);
+INSERT INTO usuario(nombres,apellidos,correo,username,passwrd,idtipousuario,idnivel) 
+VALUES('Administrador','Administrador','administrador@gmail.com','admon','S0p0rteIT2024',1,6),
+	  ('Samuel Eduardo','Magaña Martínez','samuelmartinez5516@gmail.com','samuelmtz5','210503',1,6);
 
-INSERT INTO EstadoPrestamo(estadoPrestamo) VALUES ('Pendiente'),('Completado');
-
-ALTER TABLE usuario DROP COLUMN dui
+INSERT INTO estadoprestamo(estadoprestamo) VALUES ('Pendiente'),('Completado');
 
 INSERT INTO equipo(modelo,serie,activo,idtipoequipo,idaquisicion,idcondicion,idencargado,idnivel,idmarca)
 VALUES('Probook','5CD043GV72','009269',1,1,1,5,6,2)
 
-ALTER TABLE Equipo
-RENAME COLUMN idaquisicion TO idadquisicion;
-
-ALTER TABLE Equipo
-RENAME COLUMN idencargado TO idusuario;
-
+--Consultas para llenado de tablas
 SELECT idUsuario, nombres, apellidos,  correo, username, nivel
-                FROM Usuario
-                INNER JOIN Nivel USING(idNivel)
+FROM usuario
+INNER JOIN nivel USING(idnivel)
 				
 SELECT idequipo, modelo, serie, activo, tipoequipo, adquisicion, condicion, nombres, nombremarca, nivel
 FROM equipo 
-INNER JOIN TipoEquipo USING(idTipoEquipo)
-INNER JOIN AdquisicionEquipo USING(idAdquisicion)
-INNER JOIN Condicion USING(idCondicion)
-INNER JOIN Usuario USING(idusuario)
-INNER JOIN Marca USING(idmarca)
-INNER JOIN Nivel USING(idnivel)
+INNER JOIN tipoequipo USING(idtipoequipo)
+INNER JOIN adquisicionequipo USING(idadquisicion)
+INNER JOIN condicion USING(idcondicion)
+INNER JOIN usuario USING(idusuario)
+INNER JOIN marca USING(idmarca)
+INNER JOIN nivel USING(idnivel)
 
 SELECT e.idequipo, e.modelo, e.serie, e.activo, te.tipoequipo, ae.adquisicion, c.condicion, u.nombres, m.nombremarca, n.nivel
 FROM equipo e
-INNER JOIN TipoEquipo te ON e.idTipoEquipo = te.idTipoEquipo
-INNER JOIN AdquisicionEquipo ae ON e.idAdquisicion = ae.idAdquisicion
-INNER JOIN Condicion c ON e.idCondicion = c.idCondicion
-INNER JOIN Usuario u ON e.idusuario = u.idusuario
-INNER JOIN Marca m ON e.idmarca = m.idmarca
-INNER JOIN Nivel n ON e.idnivel = n.idnivel;
+INNER JOIN tipoequipo te ON e.idtipoequipo = te.idtipoequipo
+INNER JOIN adquisicionequipo ae ON e.idadquisicion = ae.idadquisicion
+INNER JOIN condicion c ON e.idcondicion = c.idcondicion
+INNER JOIN usuario u ON e.idusuario = u.idusuario
+INNER JOIN marca m ON e.idmarca = m.idmarca
+INNER JOIN nivel n ON e.idnivel = n.idnivel;

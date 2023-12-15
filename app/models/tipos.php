@@ -37,7 +37,7 @@ class Tipos extends Validator {
     public function searchRows($value)
     {
         $sql = 'SELECT idtipoequipo, tipoequipo
-                FROM TipoEquipo
+                FROM tipoequipo
                 WHERE tipoequipo LIKE ?';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
@@ -45,7 +45,7 @@ class Tipos extends Validator {
 
     public function createRow()
     {
-        $sql = 'INSERT INTO TipoEquipo(tipoequipo)
+        $sql = 'INSERT INTO tipoequipo(tipoequipo)
                 VALUES(?)';
         $params = array($this->tipoe);
         return Database::executeRow($sql, $params);
@@ -54,7 +54,7 @@ class Tipos extends Validator {
     public function readAll()
     {
         $sql = 'SELECT idtipoequipo, tipoequipo
-                FROM TipoEquipo
+                FROM tipoequipo
                 ORDER BY tipoequipo';
         $params = null;
         return Database::getRows($sql, $params);
@@ -71,7 +71,7 @@ class Tipos extends Validator {
 
     public function updateRow()
     {
-        $sql = 'UPDATE TipoEquipo
+        $sql = 'UPDATE tipoequipo
                 SET tipoequipo = ?
                 WHERE idtipoequipo = ?';
         $params = array($this->tipoe, $this->id);
@@ -80,7 +80,7 @@ class Tipos extends Validator {
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM TipoEquipo
+        $sql = 'DELETE FROM tipoequipo
                 WHERE idtipoequipo = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
@@ -89,9 +89,9 @@ class Tipos extends Validator {
     public function readEquiposTipo()
     {
         $sql = 'SELECT t.tipoequipo, m.nombremarca, e.modelo, e.activo
-        FROM Equipo e
-        INNER JOIN TipoEquipo t on e.idTipoEquipo = t.idTipoEquipo
-        INNER JOIN Marca m ON e.idmarca = m.idmarca
+        FROM equipo e
+        INNER JOIN tipoequipo t on e.idtipoequipo = t.idtipoequipo
+        INNER JOIN marca m ON e.idmarca = m.idmarca
         WHERE e.idtipoequipo = ?
         ORDER BY activo';
         $params = array($this->id);

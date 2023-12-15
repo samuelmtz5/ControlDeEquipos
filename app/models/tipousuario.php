@@ -37,7 +37,7 @@ class TipoUsuario extends Validator {
     public function searchRows($value)
     {
         $sql = 'SELECT idtipousuario, tipousuario
-                FROM TipoUsuario
+                FROM tipousuario
                 WHERE tipousuario LIKE ?';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
@@ -45,7 +45,7 @@ class TipoUsuario extends Validator {
 
     public function createRow()
     {
-        $sql = 'INSERT INTO TipoUsuario(tipousuario)
+        $sql = 'INSERT INTO tipousuario(tipousuario)
                 VALUES(?)';
         $params = array($this->tipou);
         return Database::executeRow($sql, $params);
@@ -54,7 +54,7 @@ class TipoUsuario extends Validator {
     public function readAll()
     {
         $sql = 'SELECT idtipousuario, tipousuario
-                FROM TipoUsuario
+                FROM tipousuario
                 ORDER BY tipousuario';
         $params = null;
         return Database::getRows($sql, $params);
@@ -71,7 +71,7 @@ class TipoUsuario extends Validator {
 
     public function updateRow()
     {
-        $sql = 'UPDATE TipoUsuario
+        $sql = 'UPDATE tipousuario
                 SET tipousuario = ?
                 WHERE idtipousuario = ?';
         $params = array($this->tipou, $this->id);
@@ -80,7 +80,7 @@ class TipoUsuario extends Validator {
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM TipoUsuario
+        $sql = 'DELETE FROM tipousuario
                 WHERE idtipousuario = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);

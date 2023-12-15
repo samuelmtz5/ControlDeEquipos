@@ -37,7 +37,7 @@ class Nivel extends Validator {
     public function searchRows($value)
     {
         $sql = 'SELECT idnivel, nivel
-                FROM Nivel
+                FROM nivel
                 WHERE nivel LIKE ?';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
@@ -45,7 +45,7 @@ class Nivel extends Validator {
 
     public function createRow()
     {
-        $sql = 'INSERT INTO Nivel(nivel)
+        $sql = 'INSERT INTO nivel(nivel)
                 VALUES(?)';
         $params = array($this->nivel);
         return Database::executeRow($sql, $params);
@@ -54,7 +54,7 @@ class Nivel extends Validator {
     public function readAll()
     {
         $sql = 'SELECT idnivel, nivel
-                FROM Nivel
+                FROM nivel
                 ORDER BY nivel';
         $params = null;
         return Database::getRows($sql, $params);
@@ -63,7 +63,7 @@ class Nivel extends Validator {
     public function readOne()
     {
         $sql = 'SELECT idnivel, nivel
-                FROM Nivel
+                FROM nivel
                 WHERE idnivel = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
@@ -71,7 +71,7 @@ class Nivel extends Validator {
 
     public function updateRow()
     {
-        $sql = 'UPDATE Nivel
+        $sql = 'UPDATE nivel
                 SET nivel = ?
                 WHERE idnivel = ?';
         $params = array($this->nivel, $this->id);
@@ -80,7 +80,7 @@ class Nivel extends Validator {
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM Nivel
+        $sql = 'DELETE FROM nivel
                 WHERE idnivel = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);

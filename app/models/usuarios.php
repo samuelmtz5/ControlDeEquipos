@@ -138,7 +138,7 @@ class Usuarios extends Validator
 
     public function checkUser($user)
     {
-        $sql = 'SELECT idUsuario FROM Usuario WHERE username = ?';
+        $sql = 'SELECT idusuario FROM usuario WHERE username = ?';
         $params = array($user);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['idusuario'];
@@ -170,9 +170,8 @@ class Usuarios extends Validator
 
     public function readProfile()
     {
-        $sql = 'SELECT idUsuario, nombres, apellidos,  correo, username, nivel
+        $sql = 'SELECT idusuario, nombres, apellidos, correo, username
                 FROM usuario
-                INNER JOIN Nivel USING(idNivel)
                 WHERE idusuario = ?';
         $params = array($_SESSION['idusuario']);
         return Database::getRow($sql, $params);
@@ -180,7 +179,7 @@ class Usuarios extends Validator
 
     public function editProfile()
     {
-        $sql = 'UPDATE Usuario
+        $sql = 'UPDATE usuario
                 SET nombres = ?, apellidos = ?, correo = ?, username = ?
                 WHERE idusuario = ?';
         $params = array($this->nombres, $this->apellidos, $this->correo, $this->user, $_SESSION['idusuario']);
@@ -189,10 +188,10 @@ class Usuarios extends Validator
 
     public function searchRows($value)
     {
-        $sql = 'SELECT idUsuario, nombres, apellidos, correo, username, tipoUsuario, nivel
-                FROM Usuario 
-                INNER JOIN TipoUsuario USING(idTipoUsuario)
-                INNER JOIN Nivel USING(idNivel)
+        $sql = 'SELECT idusuario, nombres, apellidos, correo, username, tipousuario, nivel
+                FROM usuario 
+                INNER JOIN tipousuario USING(idtipousuario)
+                INNER JOIN nivel USING(idnivel)
                 WHERE apellidos ILIKE ? OR nombres ILIKE ?
                 ORDER BY apellidos';
         $params = array("%$value%", "%$value%");
@@ -201,7 +200,7 @@ class Usuarios extends Validator
 
     public function createRow()
     {
-        $sql = 'INSERT INTO Usuario(nombres, apellidos, correo, username, passwrd, idTipoUsuario, idNivel)
+        $sql = 'INSERT INTO Usuario(nombres, apellidos, correo, username, passwrd, idtipousuario, idnivel)
                 VALUES(?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombres, $this->apellidos, $this->correo, $this->user, $this->passwrd, $this->tipo, $this->nivel);
         return Database::executeRow($sql, $params);
@@ -209,10 +208,10 @@ class Usuarios extends Validator
 
     public function readAll()
     {
-        $sql = 'SELECT idUsuario, nombres, apellidos, correo, username, tipoUsuario, nivel
-                FROM Usuario 
-                INNER JOIN TipoUsuario USING(idTipoUsuario)
-                INNER JOIN Nivel USING(idNivel)
+        $sql = 'SELECT idusuario, nombres, apellidos, correo, username, tipousuario, nivel
+                FROM usuario 
+                INNER JOIN tipousuario USING(idtipousuario)
+                INNER JOIN nivel USING(idnivel)
                 ORDER BY apellidos';
         $params = null;
         return Database::getRows($sql, $params);
@@ -220,8 +219,8 @@ class Usuarios extends Validator
 
     public function readOne()
     {
-        $sql = 'SELECT idUsuario, nombres, apellidos, correo, username, idTipoUsuario, idNivel
-                FROM Usuario 
+        $sql = 'SELECT idusuario, nombres, apellidos, correo, username, idtipousuario, idnivel
+                FROM usuario 
                 WHERE idusuario = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
@@ -238,8 +237,8 @@ class Usuarios extends Validator
 
     public function deleteRow()
     {
-        $sql = 'DELETE FROM Usuario
-                WHERE idUsuario = ?';
+        $sql = 'DELETE FROM usuario
+                WHERE idusuario = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }

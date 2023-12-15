@@ -50,8 +50,8 @@ function openUpdateDialog(id) {
     document.getElementById('save-form').reset();
     let instance = M.Modal.getInstance(document.getElementById('save-modal'));
     instance.open();
-    document.getElementById('modal-title').textContent = 'Actualizar usuario';
-    document.getElementById('username').disabled = false;
+    document.getElementById('modal-title').textContent = 'Actualizar Usuario';
+    document.getElementById('Username').disabled = false;
     document.getElementById('passwrd').disabled = false;
     document.getElementById('confirmar_clave').disabled = false;
     const data = new FormData();
@@ -65,10 +65,10 @@ function openUpdateDialog(id) {
             request.json().then(function (response) {
                 if (response.status) {
                     document.getElementById('idUsuario').value = response.dataset.idusuario;
-                    document.getElementById('nombres').value = response.dataset.nombres;
-                    document.getElementById('apellidos').value = response.dataset.apellidos;
-                    document.getElementById('correo').value = response.dataset.correo;
-                    document.getElementById('username').value = response.dataset.username;
+                    document.getElementById('Nombres').value = response.dataset.nombres;
+                    document.getElementById('Apellidos').value = response.dataset.apellidos;
+                    document.getElementById('Correo').value = response.dataset.correo;
+                    document.getElementById('Username').value = response.dataset.username;
                     fillSelect(ENDPOINT_TIPOU, 'Tipo', response.dataset.idtipousuario);
                     fillSelect(ENDPOINT_NIVEL, 'Nivel', response.dataset.idnivel);
                     document.getElementById('passwrd').disabled = true;

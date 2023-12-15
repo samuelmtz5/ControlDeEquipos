@@ -43,23 +43,23 @@ Dashboard_Page::headerTemplate('Usuarios');
             <div class="row">
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">person</i>
-                    <input id="nombres" type="text" name="nombres" class="validate" maxlength="20" required/>
-                    <label for="nombres">Nombres</label>
+                    <input id="Nombres" type="text" name="Nombres" class="validate" maxlength="20" required/>
+                    <label for="Nombres">Nombres</label>
                 </div>
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">person</i>
-                    <input id="apellidos" type="text" name="apellidos" class="validate" maxlength="20" required/>
-                    <label for="apellidos">Apellidos</label>
+                    <input id="Apellidos" type="text" name="Apellidos" class="validate" maxlength="20" required/>
+                    <label for="Apellidos">Apellidos</label>
                 </div>
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">email</i>
-                    <input id="correo" type="email" name="correo" class="validate" maxlength="50" required/>
-                    <label for="correo">Correo</label>
+                    <input id="Correo" type="email" name="Correo" class="validate" maxlength="50" required/>
+                    <label for="Correo">Correo</label>
                 </div>
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">contact_mail</i>
-                    <input id="username" type="text" name="username" class="validate" maxlength="10" required/>
-                    <label for="username">Usuario</label>
+                    <input id="Username" type="text" name="Username" class="validate" maxlength="10" required/>
+                    <label for="Username">Usuario</label>
                 </div>
                 <div class="input-field col s12 m6">
                     <i class="material-icons prefix">supervisor_account</i>

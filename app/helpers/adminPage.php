@@ -195,7 +195,7 @@ class Dashboard_Page
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">person_pin</i>
                                 <input id="username" type="text" name="username" class="validate" required/>
-                                <label for="username">Alias</label>
+                                <label for="username">Usuario</label>
                             </div>
                         </div>
                         <div class="row center-align">

@@ -36,10 +36,10 @@ if (isset($_GET['action'])) {
                 break;
             case 'editProfile':
                 $_POST = $usuario->validateForm($_POST);
-                if ($usuario->setNombres($_POST['nombres'])) {
-                    if ($usuario->setApellidos($_POST['apellidos'])) {
-                        if ($usuario->setCorreo($_POST['correo'])) {
-                                if ($usuario->setUser($_POST['username'])) {
+                if ($usuario->setNombres($_POST['nombres_e'])) {
+                    if ($usuario->setApellidos($_POST['apellidos_e'])) {
+                        if ($usuario->setCorreo($_POST['correo_e'])) {
+                                if ($usuario->setUser($_POST['username_e'])) {
                                             if ($usuario->editProfile()) {
                                                 $result['status'] = 1;
                                                 $_SESSION['username'] = $usuario->getUser();
@@ -48,7 +48,7 @@ if (isset($_GET['action'])) {
                                                 $result['exception'] = Database::getException();
                                             }    
                                 } else {
-                                    $result['exception'] = 'Alias incorrecto';
+                                    $result['exception'] = 'Usuario incorrecto';
                                 }
                         } else {
                             $result['exception'] = 'Correo incorrecto';
@@ -120,12 +120,12 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = $usuario->validateForm($_POST);
-                if ($usuario->setNombres($_POST['nombres'])) {
-                    if ($usuario->setApellidos($_POST['apellidos'])) {
-                        if ($usuario->setCorreo($_POST['correo'])) {
+                if ($usuario->setNombres($_POST['Nombres'])) {
+                    if ($usuario->setApellidos($_POST['Apellidos'])) {
+                        if ($usuario->setCorreo($_POST['Correo'])) {
                                 if($usuario->setTipo($_POST['Tipo'])){
                                     if($usuario->setNivel($_POST['Nivel'])){
-                                        if ($usuario->setUser($_POST['username'])) {
+                                        if ($usuario->setUser($_POST['Username'])) {
                                             if ($_POST['passwrd'] == $_POST['confirmar_clave']) {
                                                 if ($usuario->setPasswrd($_POST['passwrd'])) {
                                                     if ($usuario->createRow()) {
@@ -178,10 +178,10 @@ if (isset($_GET['action'])) {
                 $_POST = $usuario->validateForm($_POST);
                 if ($usuario->setId($_POST['idUsuario'])) {
                     if ($usuario->readOne()) {
-                        if ($usuario->setNombres($_POST['nombres'])) {
-                            if ($usuario->setApellidos($_POST['apellidos'])) {
-                                if($usuario->setUser($_POST['username'])){
-                                    if ($usuario->setCorreo($_POST['correo'])) {    
+                        if ($usuario->setNombres($_POST['Nombres'])) {
+                            if ($usuario->setApellidos($_POST['Apellidos'])) {
+                                if($usuario->setUser($_POST['Username'])){
+                                    if ($usuario->setCorreo($_POST['Correo'])) {    
                                         if($usuario->setTipo($_POST['Tipo'])){
                                             if($usuario->setNivel($_POST['Nivel'])){
                                                 if ($usuario->updateRow()) {
