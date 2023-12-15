@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
                     $pdf->Cell(62, 10, $rowCon['activo'], 1, 1, 'C');
                 }
             } else {
-                $pdf->Cell(0, 10, ('No hay equipos para esta condición'), 1, 1);
+                $pdf->Cell(0, 10, ('No hay equipos para esta condicion'), 1, 1);
             }
             $pdf->Output();
         } else {

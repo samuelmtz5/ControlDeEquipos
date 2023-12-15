@@ -144,3 +144,13 @@ INNER JOIN condicion c ON e.idcondicion = c.idcondicion
 INNER JOIN usuario u ON e.idusuario = u.idusuario
 INNER JOIN marca m ON e.idmarca = m.idmarca
 INNER JOIN nivel n ON e.idnivel = n.idnivel;
+
+--unique a los campos que lo requieren
+ALTER TABLE equipo
+ADD UNIQUE (activo)
+
+ALTER TABLE equipo
+ADD UNIQUE (serie)
+
+ALTER TABLE usuario
+ADD UNIQUE (username)
