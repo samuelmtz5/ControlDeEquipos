@@ -33,10 +33,9 @@ class Dashboard_Page
         ');
         // Se obtiene el nombre del archivo de la página web actual.
         $filename = basename($_SERVER['PHP_SELF']);
-        // Se comprueba si existe una sesión de administrador para mostrar el menú de opciones, de lo contrario se muestra un menú vacío.
         if (isset($_SESSION['idusuario'])) {
-            // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
-            if ($filename != 'index.php' && $filename != 'register.php') {
+            // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) para no iniciar sesión otra vez, de lo contrario se direcciona a main.php
+            if ($filename != 'index.php') {
                 // Se llama al método que contiene el código de las cajas de dialogo (modals).
                 self::modals();
                 // Se imprime el código HTML para el encabezado del documento con el menú de opciones.
@@ -53,7 +52,7 @@ class Dashboard_Page
                                         <li><a href="adquisicion.php"><i class="material-icons left">account_balance_wallet</i>Adquisiciones</a></li>
                                         <li><a href="condicion.php"><i class="material-icons left">build</i>Condición</a></li>
                                         <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
-                                        <li><a href="#" class="dropdown-trigger" data-target="dropdown"><i class="material-icons left">verified_user</i>Cuenta: <b>' . $_SESSION['username'] . '</b></a></li>
+                                        <li><a href="#" class="dropdown-trigger" data-target="dropdown"><i class="material-icons left">verified_user</i>Cuenta: <b>' . $_SESSION['idtipousuario'] . '</b></a></li>
                                     </ul>
                                     <ul id="dropdown" class="dropdown-content">
                                         <li><a href="#" onclick="openProfileDialog()"><i class="material-icons">face</i>Editar perfil</a></li>
@@ -88,7 +87,7 @@ class Dashboard_Page
             }
         } else {
             // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para direccionar a index.php, de lo contrario se muestra un menú vacío.
-            if ($filename != 'index.php' && $filename != 'register.php') {
+            if ($filename != 'index.php') {
                 header('location: index.php');
             } else {
                 // Se imprime el código HTML para el encabezado del documento con un menú vacío cuando sea iniciar sesión o registrar el primer usuario.

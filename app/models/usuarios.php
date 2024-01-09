@@ -149,6 +149,17 @@ class Usuarios extends Validator
         }
     }
 
+    public function getTipoUsuario($username)
+    {
+        $sql = 'SELECT idtipousuario FROM usuario WHERE username = ?';
+        $params = array($username);
+        if ($data = Database::getRow($sql, $params)) {
+            return $data['idtipousuario'];
+        } else {
+            return false;
+        }
+    }
+
     public function checkPassword($passwrd)
     {
         $sql = 'SELECT passwrd FROM usuario WHERE idusuario = ?';
@@ -170,7 +181,7 @@ class Usuarios extends Validator
 
     public function readProfile()
     {
-        $sql = 'SELECT idusuario, nombres, apellidos, correo, username
+        $sql = 'SELECT idusuario, nombres, apellidos, correo, username, idtipousuario
                 FROM usuario
                 WHERE idusuario = ?';
         $params = array($_SESSION['idusuario']);
@@ -188,7 +199,7 @@ class Usuarios extends Validator
 
     public function searchRows($value)
     {
-        $sql = 'SELECT idusuario, nombres, apellidos, correo, username, tipousuario, nivel
+        $sql = 'SELECT idusuario, nombres, apellidos, correo, username, tipousuario, nivel, idtipousuario
                 FROM usuario 
                 INNER JOIN tipousuario USING(idtipousuario)
                 INNER JOIN nivel USING(idnivel)
@@ -208,7 +219,7 @@ class Usuarios extends Validator
 
     public function readAll()
     {
-        $sql = 'SELECT idusuario, nombres, apellidos, correo, username, tipousuario, nivel
+        $sql = 'SELECT idusuario, nombres, apellidos, correo, username, tipousuario, nivel, idtipousuario
                 FROM usuario 
                 INNER JOIN tipousuario USING(idtipousuario)
                 INNER JOIN nivel USING(idnivel)
