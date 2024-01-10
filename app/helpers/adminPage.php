@@ -51,8 +51,8 @@ class Dashboard_Page
                                         <li><a href="tipos.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
                                         <li><a href="adquisicion.php"><i class="material-icons left">account_balance_wallet</i>Adquisiciones</a></li>
                                         <li><a href="condicion.php"><i class="material-icons left">build</i>Condición</a></li>
-                                        <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
-                                        <li><a href="#" class="dropdown-trigger" data-target="dropdown"><i class="material-icons left">verified_user</i>Cuenta: <b>' . $_SESSION['idtipousuario'] . '</b></a></li>
+                                        ' . ($_SESSION['idusuario'] == 5 ? '<li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>' : '') . '
+                                        <li><a href="#" class="dropdown-trigger" data-target="dropdown"><i class="material-icons left">verified_user</i>Cuenta: <b>' . $_SESSION['tipousuario'] . '</b></a></li>
                                     </ul>
                                     <ul id="dropdown" class="dropdown-content">
                                         <li><a href="#" onclick="openProfileDialog()"><i class="material-icons">face</i>Editar perfil</a></li>
@@ -71,7 +71,7 @@ class Dashboard_Page
                             <li><a href="adquisicion.php"><i class="material-icons left">account_balance_wallet</i>Adquisiciones</a></li>
                             <li><a href="condicion.php"><i class="material-icons left">build</i>Condicion</a></li>
                             <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
-                            <li><a class="dropdown-trigger" href="#" data-target="dropdown-mobile"><i class="material-icons">verified_user</i>Cuenta: <b>' . $_SESSION['username'] . '</b></a></li>
+                            <li><a class="dropdown-trigger" href="#" data-target="dropdown-mobile"><i class="material-icons">verified_user</i>Cuenta: <b>' . $_SESSION['nombres'] . '</b></a></li>
                         </ul>
                         <ul id="dropdown-mobile" class="dropdown-content">
                             <li><a href="#" onclick="openProfileDialog()">Editar perfil</a></li>
@@ -86,7 +86,7 @@ class Dashboard_Page
                 header('location: main.php');
             }
         } else {
-            // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) y a register.php (Crear primer usuario) para direccionar a index.php, de lo contrario se muestra un menú vacío.
+            // Se verifica si la página web actual es diferente a index.php (Iniciar sesión) para direccionar a index.php, de lo contrario se muestra un menú vacío.
             if ($filename != 'index.php') {
                 header('location: index.php');
             } else {

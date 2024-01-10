@@ -262,6 +262,7 @@ if (isset($_GET['action'])) {
                         $result['message'] = 'Autenticación correcta';
                         $_SESSION['idusuario'] = $usuario->getId();
                         $_SESSION['username'] = $usuario->getUser();
+                        $_SESSION['tipousuario'] = $usuario->getTipo();
                     } else {
                         if (Database::getException()) {
                             $result['exception'] = Database::getException();

@@ -149,17 +149,6 @@ class Usuarios extends Validator
         }
     }
 
-    public function getTipoUsuario($username)
-    {
-        $sql = 'SELECT idtipousuario FROM usuario WHERE username = ?';
-        $params = array($username);
-        if ($data = Database::getRow($sql, $params)) {
-            return $data['idtipousuario'];
-        } else {
-            return false;
-        }
-    }
-
     public function checkPassword($passwrd)
     {
         $sql = 'SELECT passwrd FROM usuario WHERE idusuario = ?';
