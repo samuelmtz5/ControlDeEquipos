@@ -138,10 +138,11 @@ class Usuarios extends Validator
 
     public function checkUser($user)
     {
-        $sql = 'SELECT idusuario FROM usuario WHERE username = ?';
+        $sql = 'SELECT idusuario, idtipousuario FROM usuario WHERE username = ?';
         $params = array($user);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['idusuario'];
+            $this->tipo = $data['idtipousuario'];
             $this->user = $user;
             return true;
         } else {
