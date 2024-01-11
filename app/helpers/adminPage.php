@@ -178,22 +178,22 @@ class Dashboard_Page
                         <div class="row">
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">person</i>
-                                <input id="nombres" type="text" name="nombres" class="validate" required/>
+                                <input id="nombres" type="text" name="nombres_e" class="validate" required/>
                                 <label for="nombres">Nombres</label>
                             </div>
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">person</i>
-                                <input id="apellidos" type="text" name="apellidos" class="validate" required/>
+                                <input id="apellidos" type="text" name="apellidos_e" class="validate" required/>
                                 <label for="apellidos">Apellidos</label>
                             </div>
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">email</i>
-                                <input id="correo" type="email" name="correo" class="validate" required/>
+                                <input id="correo" type="email" name="correo_e" class="validate" required/>
                                 <label for="correo">Correo</label>
                             </div>
                             <div class="input-field col s12 m6">
                                 <i class="material-icons prefix">person_pin</i>
-                                <input id="username" type="text" name="username" class="validate" required/>
+                                <input id="username" type="text" name="username_e" class="validate" required/>
                                 <label for="username">Usuario</label>
                             </div>
                         </div>
