@@ -44,10 +44,6 @@ CREATE TABLE tipousuario(
 	tipousuario VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE prestamo(
-	idprestamo SERIAL NOT NULL PRIMARY KEY,
-	fechaprestamo DATE NOT NULL
-);
 
 CREATE TABLE usuario(
 	idusuario SERIAL NOT NULL PRIMARY KEY,
@@ -80,24 +76,6 @@ CREATE TABLE equipo(
 	idmarca INT NOT NULL,
 	CONSTRAINT fk_marca FOREIGN KEY (idmarca) REFERENCES marca(idmarca)
  );
- 
- CREATE TABLE estadoprestamo(
-	 idestadoprestamo SERIAL NOT NULL PRIMARY KEY,
-	 estadoprestamo VARCHAR(10) NOT NULL
- );
-
-CREATE TABLE detalleprestamo(
-	idprestamo SERIAL NOT NULL,
-	CONSTRAINT fk_prestamo FOREIGN KEY (idprestamo) REFERENCES prestamo(idprestamo),
-	idprestador SERIAL NOT NULL,
-	CONSTRAINT fk_prestador FOREIGN KEY (idprestador) REFERENCES usuario(idusuario),
-	idreceptor SERIAL NOT NULL,
-	CONSTRAINT fk_receptor FOREIGN KEY (idreceptor) REFERENCES usuario(idusuario),	
-	idequipo SERIAL NOT NULL,
-	CONSTRAINT fk_equipoprestado FOREIGN KEY (idequipo) REFERENCES Equipo(idequipo),
-	idestadoprestamo SERIAL NOT NULL,
-	CONSTRAINT fk_estadoprestamo FOREIGN KEY (idestadoprestamo) REFERENCES estadoprestamo(idestadoprestamo)
-);
 
 --llenado de tablas
 INSERT INTO marca(nombremarca) VALUES ('Dell'),('HP'),('Lenovo'),('XTech'),('Epson'),('Apple'),('Xiaomi'),('Samsung'),('AOC'),('Compac');
@@ -114,10 +92,7 @@ INSERT INTO tipousuario(tipousuario) VALUES ('Administrador'),('Normal');
 INSERT INTO tipoequipo(tipoequipo) VALUES ('laptop'),('Monitor'),('Impresor');
 
 INSERT INTO usuario(nombres,apellidos,correo,username,passwrd,idtipousuario,idnivel) 
-VALUES('Administrador','Administrador','administrador@gmail.com','admon','S0p0rteIT2024',1,6),
-	  ('Samuel Eduardo','Magaña Martínez','samuelmartinez5516@gmail.com','samuelmtz5','210503',1,6);
-
-INSERT INTO estadoprestamo(estadoprestamo) VALUES ('Pendiente'),('Completado');
+VALUES('Administrador','Administrador','administrador@gmail.com','admon','S0p0rteIT2024',1,6);
 
 INSERT INTO equipo(modelo,serie,activo,idtipoequipo,idaquisicion,idcondicion,idencargado,idnivel,idmarca)
 VALUES('Probook','5CD043GV72','009269',1,1,1,5,6,2)
