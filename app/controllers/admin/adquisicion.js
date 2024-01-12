@@ -1,9 +1,13 @@
+// Constante para establecer la ruta y parámetros de comunicación con la API.
 const API_AD = '../../app/api/admin/adquisicion.php?action=';
 
+// Método manejador de eventos que se ejecuta cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', function () {
+    // Se llama a la función que obtiene los registros para llenar la tabla. Se encuentra en el archivo components.js
     readRows(API_AD);
 });
 
+// Función para llenar la tabla con los datos de los registros. Se manda a llamar en la función readRows().
 function fillTable(dataset) {
     let content = '';
     dataset.map(function (row) {
@@ -23,11 +27,13 @@ function fillTable(dataset) {
     M.Tooltip.init(document.querySelectorAll('.tooltipped'));
 }
 
+// Función para llenar la tabla con los datos de los registros. Se manda a llamar en la función readRows().
 document.getElementById('search-form').addEventListener('submit', function (event) {
     event.preventDefault();
     searchRows(API_AD, 'search-form');
 });
 
+// Función para preparar el formulario al momento de insertar un registro.
 function openCreateDialog() {
     document.getElementById('save-form').reset();
     let instance = M.Modal.getInstance(document.getElementById('save-modal'));
@@ -35,6 +41,7 @@ function openCreateDialog() {
     document.getElementById('modal-title').textContent = 'Crear Adquisición';
 }
 
+// Función para preparar el formulario al momento de modificar un registro.
 function openUpdateDialog(id) {
     document.getElementById('save-form').reset();
     let instance = M.Modal.getInstance(document.getElementById('save-modal'));
@@ -65,6 +72,7 @@ function openUpdateDialog(id) {
     });
 }
 
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de guardar.
 document.getElementById('save-form').addEventListener('submit', function (event) {
     event.preventDefault();
     let action = '';
@@ -72,6 +80,7 @@ document.getElementById('save-form').addEventListener('submit', function (event)
     saveRow(API_AD, action, 'save-form', 'save-modal');
 });
 
+// Función para establecer el registro a eliminar y abrir una caja de dialogo de confirmación.
 function openDeleteDialog(id) {
     const data = new FormData();
     data.append('idadquisicion', id);

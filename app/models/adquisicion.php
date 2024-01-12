@@ -4,6 +4,9 @@ class Adquisicion extends Validator {
     private $id = null;
     private $adquisicion = null;
 
+    /*
+    *   Métodos para validar y asignar valores de los atributos.
+    */
     public function setId($value)
     {
         if ($this->validateNaturalNumber($value)) {
@@ -24,6 +27,10 @@ class Adquisicion extends Validator {
         }
     }
 
+    /*
+    *   Métodos para obtener valores de los atributos.
+    */
+
     public function getId()
     {
         return $this->id;
@@ -33,6 +40,10 @@ class Adquisicion extends Validator {
     {
         return $this->adquisicion;
     }
+
+    /*
+    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
+    */
 
     public function searchRows($value)
     {
