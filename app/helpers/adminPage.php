@@ -67,7 +67,7 @@ class Dashboard_Page
                             <li><a href="tipos.php"><i class="material-icons left">laptop</i>Tipos de Equipos</a></li>
                             <li><a href="adquisicion.php"><i class="material-icons left">account_balance_wallet</i>Adquisiciones</a></li>
                             <li><a href="condicion.php"><i class="material-icons left">build</i>Condicion</a></li>
-                            <li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>
+                            ' . ($_SESSION['idtipousuario'] == 1 ? '<li><a href="usuarios.php"><i class="material-icons left">group</i>Usuarios</a></li>' : '') . '
                             <li><a class="dropdown-trigger" href="#" data-target="dropdown-mobile"><i class="material-icons">verified_user</i>Cuenta: <b>' . $_SESSION['username'] . '</b></a></li>
                         </ul>
                         <ul id="dropdown-mobile" class="dropdown-content">
